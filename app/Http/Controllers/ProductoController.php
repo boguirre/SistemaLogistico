@@ -13,7 +13,7 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +34,7 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
