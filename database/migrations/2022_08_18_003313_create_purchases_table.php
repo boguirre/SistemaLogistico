@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('suplier_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->dateTime('date');
+            $table->string('tax');
+            $table->double('total');
+            $table->string('status');
+            $table->foreign('suplier_id')->references('id')->on('supliers')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }
