@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('suplier_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->dateTime('date');
-            $table->string('tax');
-            $table->double('total');
-            $table->string('status');
+            $table->dateTime('date_purchase');
+            $table->decimal('tax');
+            $table->decimal('total');
+            $table->enum('status',['VALID','CANCELED'])->default('VALID');
             $table->foreign('suplier_id')->references('id')->on('supliers')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
