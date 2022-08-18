@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('date_order');
             $table->decimal('total');
             $table->enum('status',['VALID','CANCELED'])->default('VALID');
-            $table->foreign('employee_id')->references('id')->on('supliers')->onDelete('set null');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });

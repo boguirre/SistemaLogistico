@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('employe_type_id');
+            $table->unsignedBigInteger('area_id');
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('phone');
+            $table->date('datebirth');
+            $table->string('address');
+            $table->string('numberdocument');
+            $table->foreign('employe_type_id')->references('id')->on('employee_types')->onDelete('set null');
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('set null');
             $table->timestamps();
         });
     }
