@@ -293,7 +293,9 @@
             </div>
             <!--  END FOOTER  -->
         </div>
+        <!--  END CONTENT AREA  -->
     </div>
+    <!-- END MAIN CONTAINER -->
     
     
 
