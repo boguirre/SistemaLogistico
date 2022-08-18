@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_type_id');
+            $table->unsignedBigInteger('employee_type_id')->nullable();
             $table->foreign('employee_type_id')->references('id')->on('employee_types')->onDelete('set null');
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('set null');
             $table->string('name');
             $table->string('lastname');
