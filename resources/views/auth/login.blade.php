@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <label class="form-label" for="password">Password</label>
+                                        <label class="form-label" for="password">Contraseña</label>
                                         <input type="password" class="form-control" id="password"  name="password">
                                     </div>
                                 </div>
