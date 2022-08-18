@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employe_type_id');
+            $table->unsignedBigInteger('employee_type_id');
             $table->unsignedBigInteger('area_id');
             $table->string('name');
             $table->string('lastname');
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('datebirth');
             $table->string('address');
             $table->string('numberdocument');
-            $table->foreign('employe_type_id')->references('id')->on('employee_types')->onDelete('set null');
+            $table->foreign('employee_type_id')->references('id')->on('employee_types')->onDelete('set null');
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('set null');
             $table->timestamps();
         });
