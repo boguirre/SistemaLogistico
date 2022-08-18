@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>SignIn Boxed | CORK - Multipurpose Bootstrap Dashboard Template </title>
+    <title>ICTE | Login</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico"/>
     <link href="layouts/vertical-dark-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="layouts/vertical-dark-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
@@ -42,27 +42,32 @@
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     
-                                    <h2>Sign In</h2>
-                                    <p>Enter your email and password to login</p>
+                                    <h2>Inicia Sesión</h2>
+                                    <p>Ingrese su correo electrónico y contraseña para iniciar sesión                                    </p>
                                     
                                 </div>
+                                <x-jet-validation-errors class="mb-4" style="color:red"/>
+
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control">
+                                        <label class="form-label" for="email" >Correo</label>
+                                        <input type="email" class="form-control" name="email" :value="old('email')">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <label class="form-label">Password</label>
-                                        <input type="text" class="form-control">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" class="form-control" id="password"  name="password">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <div class="form-check form-check-primary form-check-inline">
                                             <input class="form-check-input me-3" type="checkbox" id="form-check-default">
-                                            <label class="form-check-label" for="form-check-default">
+                                            <label class="form-check-label" for="form-check-default" for="remember_me" id="remember_me" name="remember">
                                                 Remember me
                                             </label>
                                         </div>
@@ -71,52 +76,13 @@
                                 
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <button class="btn btn-secondary w-100">SIGN IN</button>
+                                        <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
                                     </div>
                                 </div>
-                                
-                                <div class="col-12 mb-4">
-                                    <div class="">
-                                        <div class="seperator">
-                                            <hr>
-                                            <div class="seperator-text"> <span>Or continue with</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-sm-4 col-12">
-                                    <div class="mb-4">
-                                        <button class="btn  btn-social-login w-100 ">
-                                            <img src="/assets/img/google-gmail.svg" alt="" class="img-fluid">
-                                            <span class="btn-text-inner">Google</span>
-                                        </button>
-                                    </div>
-                                </div>
-    
-                                <div class="col-sm-4 col-12">
-                                    <div class="mb-4">
-                                        <button class="btn  btn-social-login w-100">
-                                            <img src="/assets/img/github-icon.svg" alt="" class="img-fluid">
-                                            <span class="btn-text-inner">Github</span>
-                                        </button>
-                                    </div>
-                                </div>
-    
-                                <div class="col-sm-4 col-12">
-                                    <div class="mb-4">
-                                        <button class="btn  btn-social-login w-100">
-                                            <img src="/assets/img/twitter.svg" alt="" class="img-fluid">
-                                            <span class="btn-text-inner">Twitter</span>
-                                        </button>
-                                    </div>
-                                </div>
+                            </form>
 
-                                <div class="col-12">
-                                    <div class="text-center">
-                                        <p class="mb-0">Dont't have an account ? <a href="javascript:void(0);" class="text-warning">Sign Up</a></p>
-                                    </div>
-                                </div>
                                 
+                                                            
                             </div>
                             
                         </div>
