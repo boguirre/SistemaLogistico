@@ -76,7 +76,7 @@
                                 
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <button type="submit" class="btn btn-secondary w-100">SIGN IN</button>
+                                        <button type="submit" class="btn btn-secondary w-100">INGRESAR</button>
                                     </div>
                                 </div>
                             </form>
