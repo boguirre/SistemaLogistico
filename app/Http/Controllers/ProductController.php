@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Suplier;
+use App\Models\UnitMeasure;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products.index',compact('products'));
     }
 
     /**
@@ -25,7 +29,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $suplier = Suplier::pluck('name','id');
+        $measure = UnitMeasure::pluck('name','id');
+        $category = Category::pluck('name','id');
+        return view('products.create',compact('suplier','measure','category'));
     }
 
     /**
@@ -36,7 +43,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            
+        ]);
+
+        $product = Product::create($request->all()+[
+            'status'=>'1'
+        ]);
+
+        return redirect()->route('products.index')->with('guardar', 'ok');
+
+
     }
 
     /**

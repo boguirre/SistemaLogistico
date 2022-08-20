@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function categories(){
+    
+        return $this->belongsTo(Category::class,'category_id');
+
+    }
+    public function measures(){
+    
+        return $this->belongsTo(UnitMeasure::class,'unit_measure_id');
+
+    }
+    public function supliers(){
+    
+        return $this->belongsTo(Suplier::class,'suplier_id');
+
+    }
 }

@@ -64,7 +64,7 @@
                         <a href="{{route('measures.index')}}"> Unidad de Medida </a>
                     </li>
                     <li>
-                        <a href=""> Producto </a>
+                        <a href="{{route('products.index')}}"> Producto </a>
                     </li>
                     <li>
                         <a href="./app-invoice-edit.html"> Edit </a>
