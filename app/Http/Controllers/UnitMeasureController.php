@@ -15,7 +15,8 @@ class UnitMeasureController extends Controller
      */
     public function index()
     {
-        //
+        $measures = UnitMeasure::all();
+        return view('measures.index',compact('measures'));
     }
 
     /**
@@ -25,7 +26,7 @@ class UnitMeasureController extends Controller
      */
     public function create()
     {
-        //
+        return view('measures.create');
     }
 
     /**
@@ -36,7 +37,15 @@ class UnitMeasureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            
+        ]);
+        $measure = UnitMeasure::create($request->all());
+
+        return redirect()->route('measures.index')->with('guardar', 'ok');
+
+
     }
 
     /**
@@ -56,9 +65,9 @@ class UnitMeasureController extends Controller
      * @param  \App\Models\UnitMeasure  $unitMeasure
      * @return \Illuminate\Http\Response
      */
-    public function edit(UnitMeasure $unitMeasure)
+    public function edit(UnitMeasure $measure)
     {
-        //
+        return view('measures.edit',compact('measure'));
     }
 
     /**
@@ -68,9 +77,16 @@ class UnitMeasureController extends Controller
      * @param  \App\Models\UnitMeasure  $unitMeasure
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UnitMeasure $unitMeasure)
+    public function update(Request $request, UnitMeasure $measure)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            
+        ]);
+        $measure->update($request->all());
+
+        return redirect()->route('measures.index')->with('guardar', 'ok');
+
     }
 
     /**
@@ -79,8 +95,10 @@ class UnitMeasureController extends Controller
      * @param  \App\Models\UnitMeasure  $unitMeasure
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UnitMeasure $unitMeasure)
+    public function destroy(UnitMeasure $measure)
     {
-        //
+        $measure->delete();
+        return redirect()->route('measures.index')->with('guardar', 'ok');
+
     }
 }

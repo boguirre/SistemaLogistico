@@ -58,13 +58,13 @@
                 <ul class="collapse submenu list-unstyled" id="invoice" data-bs-parent="#accordionExample">
                     <li>
 
-                        <a href="./app-invoice-list.html"> Tipo Producto </a>
+                        <a href="{{route('categories.index')}}"> Tipo Producto </a>
                     </li>
                     <li>
-                        <a href="./app-invoice-preview.html"> Unidad de Medida </a>
+                        <a href="{{route('measures.index')}}"> Unidad de Medida </a>
                     </li>
                     <li>
-                        <a href="./app-invoice-add.html"> Producto </a>
+                        <a href=""> Producto </a>
                     </li>
                     <li>
                         <a href="./app-invoice-edit.html"> Edit </a>
