@@ -15,7 +15,8 @@ class SuplierController extends Controller
      */
     public function index()
     {
-        //
+        $supliers= Suplier::all();
+        return view('supliers.index',compact('supliers'));
     }
 
     /**
@@ -25,7 +26,7 @@ class SuplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('supliers.create');
     }
 
     /**
@@ -36,8 +37,21 @@ class SuplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|email',
+            'ruc_number' => 'required|max:50',
+            'address' => 'required|max:50',
+            'phone' => 'required|max:50',
+
+            
+        ]);
+
+        $suplier = Suplier::create($request->all());
+        return redirect()->route('supliers.index')->with('guardar', 'ok');
+
     }
+
 
     /**
      * Display the specified resource.
@@ -58,7 +72,8 @@ class SuplierController extends Controller
      */
     public function edit(Suplier $suplier)
     {
-        //
+        
+        return view('supliers.edit',compact('suplier'));
     }
 
     /**
@@ -70,7 +85,19 @@ class SuplierController extends Controller
      */
     public function update(Request $request, Suplier $suplier)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|email',
+            'ruc_number' => 'required|max:50',
+            'address' => 'required|max:50',
+            'phone' => 'required|max:50',
+
+            
+        ]);
+
+        $suplier->update($request->all());
+        return redirect()->route('supliers.index')->with('guardar', 'ok');
+
     }
 
     /**
@@ -81,6 +108,9 @@ class SuplierController extends Controller
      */
     public function destroy(Suplier $suplier)
     {
-        //
+        $suplier->delete();
+
+        return redirect()->route('supliers.index')->with('guardar', 'ok');
+
     }
 }
