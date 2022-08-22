@@ -4,13 +4,13 @@
 
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
-                <div class="nav-item theme-logo">
+                {{-- <div class="nav-item theme-logo">
                     <a href="./index.html">
                         <img src="/assets/img/logo.svg'" class="navbar-logo" alt="logo">
                     </a>
-                </div>
+                </div> --}}
                 <div class="nav-item theme-text">
-                    <a href="./index.html" class="nav-link"> CORK </a>
+                    <a href="./index.html" class="nav-link"> LOGISTICA </a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">

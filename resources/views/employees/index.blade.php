@@ -6,7 +6,7 @@
                     <!-- BREADCRUMB -->
                     <div class="page-meta">
                         {{-- <div class="col text-right"> --}}
-                        <a href="{{url('/supliers/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Empleado</a>
+                        <a href="{{url('/employees/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Empleado</a>
                           {{-- </div> --}}
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -47,9 +47,9 @@
                                         <tr>
                                             <td>
                                                 <div class="d-flex">                                                        
-                                                    <div class="usr-img-frame me-2 rounded-circle">
+                                                    {{-- <div class="usr-img-frame me-2 rounded-circle">
                                                         <img alt="avatar" class="img-fluid rounded-circle" src="src/assets/img/boy.png">
-                                                    </div>
+                                                    </div> --}}
                                                     <p class="align-self-center mb-0 admin-name"> {{$employee->id}} </p>
                                                 </div>
                                             </td>

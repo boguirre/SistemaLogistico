@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use App\Http\Controllers\Controller;
+use App\Models\Area;
+use App\Models\EmployeeType;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -16,7 +18,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all();
-        return view('employess.index',compact('employees'));
+        return view('employees.index',compact('employees'));
     }
 
     /**
@@ -26,7 +28,11 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employess.create');
+        $employeetype = EmployeeType::pluck('name','id');
+
+        $area = Area::pluck('name','id');
+
+        return view('employees.create',compact('employeetype','area'));
     }
 
     /**
@@ -37,7 +43,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $employee = Employee::create($request->all());
+
+        return redirect()->route('employees.index')->with('guardar', 'ok');
+
+
     }
 
     /**
@@ -59,7 +70,13 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $employeetype = EmployeeType::pluck('name','id');
+
+        $area = Area::pluck('name','id');
+
+
+        return view('employees.edit',compact('employee','employeetype','area'));
+
     }
 
     /**
@@ -71,7 +88,11 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        
+        $employee->update($request->all());
+
+        return redirect()->route('employees.index')->with('guardar', 'ok');
+
     }
 
     /**
@@ -82,6 +103,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        return redirect()->route('employees.index')->with('guardar', 'ok');
     }
 }
