@@ -25,7 +25,7 @@
             <input type="name" class="form-control" id="name" name="name"> 
         </div>
         <div class="col-md-6">
-            <label for="name" class="form-label">Nombre</label>
+            <label for="name" class="form-label">Categoria</label>
             {!! Form::select('category_id', $category, null, ['class' => 'form-control  block w-full mt-1','style'=>'color:white', 'placeholder'=>'Seleccione Una Categoria .....']) !!}                   
         </div>
         

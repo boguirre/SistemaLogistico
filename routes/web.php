@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +36,5 @@ Route::middleware([
 Route::resource('categories',CategoryController::class)->names('categories');
 Route::resource('measures',UnitMeasureController::class)->names('measures');
 Route::resource('products',ProductController::class)->names('products');
+Route::resource('supliers',SuplierController::class)->names('supliers');
+Route::resource('employees',EmployeeController::class)->names('employees');

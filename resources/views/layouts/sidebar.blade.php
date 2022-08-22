@@ -67,7 +67,7 @@
                         <a href="{{route('products.index')}}"> Producto </a>
                     </li>
                     <li>
-                        <a href="./app-invoice-edit.html"> Edit </a>
+                        <a href="{{route('supliers.index')}}"> Proveedores </a>
                     </li>                            
                 </ul>
             </li>

@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+
+    public function employeetypes(){
+    
+        return $this->belongsTo(EmployeeType::class,'employee_type_id');
+
+    }
+    public function areas(){
+    
+        return $this->belongsTo(Area::class,'area_id');
+
+    }
+
+
 }
