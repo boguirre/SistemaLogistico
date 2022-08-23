@@ -135,7 +135,7 @@ product_id.change(function(){
 
 
 function agregar() {
-    const datosProducto = document.getElementById('product_id').value.split('_');
+    datosProducto = document.getElementById('product_id').value.split('_');
 
     product_id = datosProducto[0];
     producto = $("#product_id option:selected").text();
@@ -144,7 +144,7 @@ function agregar() {
     price = $("#price").val();
     stock = $("#stock").val();
     impuesto = $("#tax").val();
-    if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0 && discount != "" && price != "" && price > 0) {
+    if (product_id != "" && product_id > 0  && quantity != "" && quantity > 0 && discount != "" && price != "" && price > 0) {
         if (parseInt(stock) >= parseInt(quantity)) {
             subtotal[cont] = (quantity * price) - (quantity * price * discount / 100);
             total = total + subtotal[cont];
