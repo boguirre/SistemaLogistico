@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -15,9 +17,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $ordes = Order::all();
+        $orders = Order::all();
         
-        return view('orders.index',compact('order'));
+        return view('orders.index',compact('orders'));
     }
 
     /**
@@ -27,7 +29,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::get();
+        $employees = Employee::get();
+        return view('orders.create',compact('products','employees'));
     }
 
     /**

@@ -34,6 +34,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->name('get_products_by_id');
 
 Route::resource('categories',CategoryController::class)->names('categories');
 Route::resource('measures',UnitMeasureController::class)->names('measures');
