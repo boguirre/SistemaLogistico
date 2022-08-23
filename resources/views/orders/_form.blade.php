@@ -3,7 +3,7 @@
 
 <div class="col-md-12">
     <label for="employee_id ">Empleado</label>
-    <select class="form-control" name="employee_id " id="employee_id " style="color: white">
+    <select class="form-control" name="employee_id" id="employee_id" style="color: white">
         <option value="" disabled selected>Selecccione un Empleado</option>
         @foreach ($employees as $employee)
         <option value="{{$employee->id}}">{{$employee->name}}</option>
