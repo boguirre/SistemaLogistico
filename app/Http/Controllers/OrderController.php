@@ -6,7 +6,9 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -42,7 +44,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Order::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'date_order'=>Carbon::now('America/Lima'),
+        ]);
+        foreach ($request->product_id as $key => $product) {
+            $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price"=>$request->price[$key]);
+        }
+        $order->orderDetails()->createMany($results);
+        return redirect()->route('orders.index');
     }
 
     /**

@@ -113,28 +113,29 @@ function mostrarValores() {
 }
 
 
- var product_id = $('#product_id');
+var product_id = $('#product_id')
 	
-     product_id.change(function(){
-         $.ajax({
-             url: "{{route('get_products_by_id')}}",
-             method: 'GET',
-             data:{
-                 product_id: product_id.val(),
-             },
-             success: function(data){
-                 $("#price").val(data.price);
-                 $("#stock").val(data.stock);
-                //  $("#code").val(data.code);
-         }
-     });
- });
+product_id.change(function(){
+       $.ajax({
+           url: "{{route('get_products_by_id')}}",
+           method: 'GET',
+           data:{
+               product_id: product_id.val(),
+           },
+           success: function(data){
+               $("#price").val(data.price);
+               $("#stock").val(data.stock);
+       }
+   });
+});
+
+
 
 
 
 
 function agregar() {
-    datosProducto = document.getElementById('product_id').value.split('_');
+    const datosProducto = document.getElementById('product_id').value.split('_');
 
     product_id = datosProducto[0];
     producto = $("#product_id option:selected").text();
@@ -155,13 +156,15 @@ function agregar() {
             $('#detalles').append(fila);
         } else {
             Swal.fire({
-                type: 'error',
+                icon: 'error',
+                title: 'Oops...',
                 text: 'La cantidad a vender supera el stock.',
             })
         }
     } else {
         Swal.fire({
-            type: 'error',
+            icon: 'error',
+            title: 'Oops...',
             text: 'Rellene todos los campos del detalle de la venta.',
         })
     }

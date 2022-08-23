@@ -1,9 +1,10 @@
-
+<br>
   <div class="row">
 
 <div class="col-md-12">
-    <label for="client_id">Cliente</label>
-    <select class="form-control" name="client_id" id="client_id">
+    <label for="employee_id ">Empleado</label>
+    <select class="form-control" name="employee_id " id="employee_id " style="color: white">
+        <option value="" disabled selected>Selecccione un Empleado</option>
         @foreach ($employees as $employee)
         <option value="{{$employee->id}}">{{$employee->name}}</option>
         @endforeach
@@ -22,7 +23,6 @@
             <label for="product_id">Producto</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
             <select class="form-control" name="product_id" id="product_id">
-                <option value="" disabled selected>Selecccione un producto</option>
                 @foreach ($products as $product)
                 <option value="{{$product->id}}">{{$product->name}}</option>
                 @endforeach
@@ -31,7 +31,7 @@
     <div class="col-md-4">
             <label for="">Stock actual</label>
             <input type="text" name="" id="stock" value="" class="form-control" disabled>
-          </div>
+    </div>
     <div class="col-md-4">
             <label for="price">Precio de venta</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
