@@ -46,10 +46,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'employee_id' => 'required',
-            'product_id' => 'required',
-            'quantity' => 'numeric|required|min:1|max:99999999',
-            'price' => 'numeric|required|min:1|max:99999999'
-            
+            'product_id' => 'required'          
         ]);
 
         $order = Order::create($request->all()+[
