@@ -44,6 +44,14 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'employee_id' => 'required',
+            'product_id' => 'required',
+            'quantity' => 'numeric|required|min:1|max:99999999',
+            'price' => 'numeric|required|min:1|max:99999999'
+            
+        ]);
+
         $order = Order::create($request->all()+[
             'user_id'=>Auth::user()->id,
             'date_order'=>Carbon::now('America/Lima'),
