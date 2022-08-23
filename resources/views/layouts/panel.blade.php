@@ -27,7 +27,7 @@
     <link rel="stylesheet" type="text/css" href="/plugins/css/dark/table/datatable/dt-global_style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-    <script src="/plugins/src/apex/apexcharts.min.js"></script>
+    {{-- <script src="/plugins/src/apex/apexcharts.min.js"></script> --}}
 
 </head>
 <body class="layout-boxed">
@@ -73,7 +73,9 @@
 
     </div>
     <!-- END MAIN CONTAINER -->
-    <script src="/assets/js/dashboard/dash_1.js"></script>
+    @yield('scripts')
+
+    {{-- <script src="/assets/js/dashboard/dash_1.js"></script> --}}
  <script src="src/plugins/src/table/datatable/datatables.js"></script>
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -106,6 +108,8 @@
          "pageLength": 10 
      });
  </script>
+
+
  <!-- END PAGE LEVEL SCRIPTS -->
 
 </body>

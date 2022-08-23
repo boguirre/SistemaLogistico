@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Models\Product;
@@ -38,3 +39,4 @@ Route::resource('measures',UnitMeasureController::class)->names('measures');
 Route::resource('products',ProductController::class)->names('products');
 Route::resource('supliers',SuplierController::class)->names('supliers');
 Route::resource('employees',EmployeeController::class)->names('employees');
+Route::resource('purchases',PurchaseController::class)->names('purchases');

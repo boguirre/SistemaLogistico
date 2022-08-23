@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Suplier;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
@@ -15,7 +19,9 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+        $purchases = Purchase::all();
+        
+        return view('purchases.index',compact('purchases'));
     }
 
     /**
@@ -25,7 +31,10 @@ class PurchaseController extends Controller
      */
     public function create()
     {
-        //
+        $providers = Suplier::get();
+        $products = Product::get();
+
+        return view('purchases.create',compact('providers','products'));
     }
 
     /**
@@ -36,7 +45,18 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $purchase = Purchase::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'date_purchase'=>Carbon::now('America/Lima'),
+        ]);
+
+        foreach ($request->product_id as $key => $product) {
+            $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price"=>$request->price[$key]);
+        }
+        $purchase->purchaseDetails()->createMany($results);
+
+        return redirect()->route('purchases.index');
+
     }
 
     /**
