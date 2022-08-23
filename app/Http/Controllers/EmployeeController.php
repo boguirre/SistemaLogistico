@@ -43,6 +43,17 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'phone' => 'required|max:9',
+            'address' => 'required|max:255',
+            'numberdocument' => 'required|max:11',
+            'employee_type_id' => 'required',
+            'area_id' => 'required',
+            'datebirth' => 'required'
+            
+        ]);
     
         $employee = Employee::create($request->all());
 
@@ -88,6 +99,17 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'phone' => 'required|max:9',
+            'address' => 'required|max:255',
+            'numberdocument' => 'required|max:11',
+            'employee_type_id' => 'required',
+            'area_id' => 'required',
+            'datebirth' => 'required'
+            
+        ]);
         
         $employee->update($request->all());
 

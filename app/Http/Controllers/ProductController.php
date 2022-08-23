@@ -32,7 +32,11 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            
+            'suplier_id' => 'required',
+            'unit_measure_id' => 'required',
+            'category_id' => 'required',
+            'code' => 'required|max:50',
+            'stock' => 'numeric|required|min:1|max:99999999'
             
         ]);
 
