@@ -1,14 +1,14 @@
 @extends('layouts.panel')
 
 @section('content')
-<li class="nav-item d-none d-lg-flex">
+{{-- <li class="nav-item d-none d-lg-flex">
     <a class="nav-link" type="button" data-toggle="modal" data-target="#exampleModal-2">
       <span class="btn btn-warning">+ Registrar cliente</span>
     </a>
-</li>
-
+</li> --}}
+<br>
 <div class="content-wrapper">
-    <div class="page-header">
+    {{-- <div class="page-header">
         <h3 class="page-title">
             Registro de venta
         </h3>
@@ -19,7 +19,8 @@
                 <li class="breadcrumb-item active" aria-current="page">Registro de venta</li>
             </ol>
         </nav>
-    </div>
+    </div> --}}
+    <br>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
@@ -27,7 +28,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de venta</h4>
+                        <h4 class="card-title">Registro de Pedido</h4>
                     </div>
                     
                     @include('orders._form')
@@ -46,7 +47,7 @@
     </div>
 </div>
 
-
+{{-- 
 <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -85,7 +86,7 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @endsection
