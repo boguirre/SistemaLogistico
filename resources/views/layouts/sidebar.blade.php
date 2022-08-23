@@ -76,7 +76,7 @@
                 <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                        <span>Ecommerce</span>
+                        <span>Compras</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -84,12 +84,12 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="ecommerce" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="./app-ecommerce-product-shop.html"> Shop </a>
+                        <a href="{{route('purchases.index')}}"> Mis compras </a>
                     </li>
                     <li>
-                        <a href="./app-ecommerce-product.html"> Product </a>
+                        <a href="./app-ecommerce-product.html"> Reportes </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="./app-ecommerce-product-list.html"> List </a>
                     </li>
                     <li>
@@ -97,7 +97,7 @@
                     </li>                            
                     <li>
                         <a href="./app-ecommerce-product-edit.html"> Edit </a>
-                    </li>                            
+                    </li>                             --}}
                 </ul>
             </li>
 
@@ -105,7 +105,7 @@
                 <a href="#blog" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
-                        <span>Blog</span>
+                        <span>Pedidos</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -113,7 +113,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="blog" data-bs-parent="#accordionExample">
                     <li>
-                        <a href="./app-blog-grid.html"> Grid </a>
+                        <a href="{{route('orders.index')}}"> Lista de Pedidos </a>
                     </li>
                     <li>
                         <a href="./app-blog-list.html"> List </a>
