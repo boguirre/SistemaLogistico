@@ -593,7 +593,6 @@ class ComposerStaticInit821e18fa9f0e3169b8c0895f8d37c8f4
         'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\OrderDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderDetailController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
-        'App\\Http\\Controllers\\ProductoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductoController.php',
         'App\\Http\\Controllers\\PurchaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/PurchaseController.php',
         'App\\Http\\Controllers\\PurchaseDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/PurchaseDetailController.php',
         'App\\Http\\Controllers\\SuplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuplierController.php',
