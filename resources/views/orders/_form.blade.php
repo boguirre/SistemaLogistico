@@ -3,12 +3,15 @@
 
 <div class="col-md-12">
     <label for="employee_id ">Empleado</label>
-    <select class="form-control" name="employee_id " id="employee_id " style="color: white">
+    <select class="form-control" name="employee_id" id="employee_id" style="color: white">
         <option value="" disabled selected>Selecccione un Empleado</option>
         @foreach ($employees as $employee)
         <option value="{{$employee->id}}">{{$employee->name}}</option>
         @endforeach
     </select>
+    @error('employee_id')
+        <strong class="text-sm text-red-600">{{$message}}</strong>
+    @enderror 
 </div>
 </div>
 
@@ -27,6 +30,9 @@
                 <option value="{{$product->id}}">{{$product->name}}</option>
                 @endforeach
             </select>
+            @error('product_id')
+                <strong class="text-sm text-red-600">{{$message}}</strong>
+            @enderror 
     </div>
     <div class="col-md-4">
             <label for="">Stock actual</label>
@@ -34,7 +40,7 @@
     </div>
     <div class="col-md-4">
             <label for="price">Precio de venta</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
+            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
     </div>
   </div>
 

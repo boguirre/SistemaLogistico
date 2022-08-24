@@ -47,10 +47,7 @@ class PurchaseController extends Controller
     {
         $request->validate([
             'suplier_id' => 'required',
-            'product_id' => 'required',
-            'quantity' => 'numeric|required|min:1|max:99999999',
-            'price' => 'numeric|required|min:1|max:99999999'
-            
+            'product_id' => 'required'     
         ]);
         $purchase = Purchase::create($request->all()+[
             'user_id'=>Auth::user()->id,

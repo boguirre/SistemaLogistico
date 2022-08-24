@@ -52,18 +52,12 @@
             <label for="quantity">Cantidad</label>
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         {{-- </div> --}}
-        @error('quantity')
-                <strong class="text-sm text-red-600">{{$message}}</strong>
-        @enderror
     </div>
     <div class="col-md-4">
         {{-- <div class="form-group"> --}}
             <label for="price">Precio de compra</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
         {{-- </div> --}}
-        @error('price')
-                <strong class="text-sm text-red-600">{{$message}}</strong>
-        @enderror
     </div>
 </div>
 <br>
