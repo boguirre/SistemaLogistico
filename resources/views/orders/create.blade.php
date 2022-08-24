@@ -113,21 +113,9 @@ function mostrarValores() {
 
 $("#product_id").on('change',mostrarValores);
 
-var product_id = $('#product_id');
-	
-product_id.change(function(){
-       $.ajax({
-           url: "{{route('get_products_by_id')}}",
-           method: 'GET',
-           data:{
-               product_id: product_id.val(),
-           },
-           success: function(data){
-               $("#price").val(data.price);
-               $("#stock").val(data.stock);
-       }
-   });
-})
+
+
+
 
 
 function agregar() {

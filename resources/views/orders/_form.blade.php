@@ -27,7 +27,7 @@
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
             <select class="form-control" name="product_id" id="product_id">
                 @foreach ($products as $product)
-                <option value="{{$product->id}}">{{$product->name}}</option>
+                <option value="{{$product->id}}_{{$product->stock}}_{{$product->price}}">{{$product->name}}</option>
                 @endforeach
             </select>
             @error('product_id')
@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-4">
             <label for="price">Precio de venta</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
+            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
     </div>
   </div>
 
