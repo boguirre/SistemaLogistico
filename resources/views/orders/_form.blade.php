@@ -26,6 +26,7 @@
             <label for="product_id">Producto</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
             <select class="form-control" name="product_id" id="product_id">
+                <option value="" disabled selected>Selecccione un Producto</option>
                 @foreach ($products as $product)
                 <option value="{{$product->id}}_{{$product->stock}}_{{$product->price}}">{{$product->name}}</option>
                 @endforeach
