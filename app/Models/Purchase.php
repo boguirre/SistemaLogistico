@@ -11,11 +11,11 @@ class Purchase extends Model
     protected $guarded = ['id'];
 
     public function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function supliers(){
-        return $this->belongsTo(Suplier::class);
+        return $this->belongsTo(Suplier::class,'suplier_id');
     }
 
     public function purchaseDetails(){
