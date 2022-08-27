@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\UnitMeasureController;
+use App\Http\Controllers\UserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -45,3 +47,7 @@ Route::resource('employees',EmployeeController::class)->names('employees');
 Route::resource('purchases',PurchaseController::class)->names('purchases');
 Route::resource('orders',OrderController::class)->names('orders');
 Route::resource('roles',RoleController::class)->names('roles');
+Route::resource('areas',AreaController::class)->names('areas');
+Route::resource('users',UserController::class)->names('users');
+Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->name('users.roles');
+Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->name('users.updaterole');
