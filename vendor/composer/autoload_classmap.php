@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
     'App\\Http\\Controllers\\PurchaseController' => $baseDir . '/app/Http/Controllers/PurchaseController.php',
     'App\\Http\\Controllers\\PurchaseDetailController' => $baseDir . '/app/Http/Controllers/PurchaseDetailController.php',
+    'App\\Http\\Controllers\\RoleController' => $baseDir . '/app/Http/Controllers/RoleController.php',
     'App\\Http\\Controllers\\SuplierController' => $baseDir . '/app/Http/Controllers/SuplierController.php',
     'App\\Http\\Controllers\\UnitMeasureController' => $baseDir . '/app/Http/Controllers/UnitMeasureController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
