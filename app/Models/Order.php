@@ -11,7 +11,16 @@ class Order extends Model
 
     protected $guarded = ['id'];
 
+    public function employees(){
+        return $this->belongsTo(Employee::class,'employee_id');
+    }
+
     public function orderDetails(){
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+
     }
 }

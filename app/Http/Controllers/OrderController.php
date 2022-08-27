@@ -68,7 +68,14 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $subtotal = 0 ;
+        $orderDetails = $order->orderDetails;
+        foreach ($orderDetails as $orderDetail) {
+            $subtotal += $orderDetail->quantity*$orderDetail->price;
+        }
+
+        return view('orders.show', compact('order', 'orderDetails', 'subtotal'));
+   
     }
 
     /**
