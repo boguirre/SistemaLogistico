@@ -1,7 +1,7 @@
 <br>
   <div class="row">
 
-<div class="col-md-12">
+<div class="col-md-6">
     <label for="employee_id ">Empleado</label>
     <select class="form-control" name="employee_id" id="employee_id" style="color: white">
         <option value="" disabled selected>Selecccione un Empleado</option>
@@ -13,6 +13,14 @@
         <strong class="text-sm text-red-600">{{$message}}</strong>
     @enderror 
 </div>
+
+
+<div class="col-md-6">
+    <label for="date_order_delivery">Fecha Entrega:</label>
+    {!! Form::date('date_order_delivery', null, ['class' => 'form-control ', 'style'=>'color:black; background:white'. ($errors->has('date_order_delivery') ? ' border-red-600' : '')]) !!}
+
+</div>
+
 </div>
 
 {{-- <div class="form-group">

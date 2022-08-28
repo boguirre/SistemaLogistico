@@ -10,7 +10,7 @@
 
     <div class="col-md-12">
         <label for="code" class="form-label">Codigo</label>
-        <input type="code" class="form-control" id="code" name="code" style="color: white">
+        <input type="text" class="form-control" id="code" name="code" style="color: white">
         @error('code')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror 

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('name');
             $table->integer('stock');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('code')->nullable();
             $table->string('status');
             $table->foreign('suplier_id')->references('id')->on('supliers')->onDelete('set null');

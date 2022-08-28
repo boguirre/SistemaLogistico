@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('status','=','PENDIENTE')->get();
         
         return view('orders.index',compact('orders'));
     }
@@ -46,7 +46,8 @@ class OrderController extends Controller
     {
         $request->validate([
             'employee_id' => 'required',
-            'product_id' => 'required'          
+            'product_id' => 'required',
+            'date_order_delivery'=>'required|date'          
         ]);
 
         $order = Order::create($request->all()+[
@@ -111,4 +112,43 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function culminated(){
+
+
+
+        $orders =Order::where('status','=','ENTREGADO')->get();
+
+        return view('orders.culminated.index',compact('orders'));
+    }
+
+    public function ordercompleted(Order $order){
+
+        if($order->date_order_delivery < Carbon::now()->format('Y-m-d')){
+            $order->update(['statusend'=>'COMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
+        }
+        else {
+            $order->update(['statusend'=>'COMPLETO','status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
+        }
+
+        return redirect()->route('orders.index')->with('editar', 'ok');
+
+    }
+
+    public function orderincompleted(Order $order){
+
+        if($order->date_order_delivery < Carbon::now()->format('Y-m-d')){
+            $order->update(['statusend'=>'INCOMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
+        }
+        // $order->update(['status'=>'INCOMPLETO','status'=>'ENTREGADO']);
+        else{
+            $order->update(['statusend'=>'INCOMPLETO','status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
+        }
+
+        return redirect()->route('orders.index')->with('editar', 'ok');
+    }
+
+
+
+
 }

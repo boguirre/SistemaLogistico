@@ -12,7 +12,7 @@
         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tabla</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Pedidos</li>
+                <li class="breadcrumb-item active" aria-current="page">Pedidos Entregados</li>
             </ol>
         </nav>
 
@@ -33,6 +33,7 @@
                             <th>Fecha</th>
                             <th>Total</th>
                             <th class="text-center dt-no-sorting">Estado</th>
+                            <th class="text-center dt-no-sorting">Conformidad</th>
 
                             <th class="text-center dt-no-sorting">Acciones</th>
 
@@ -56,18 +57,31 @@
                             <td>
                                 @switch($order->status)
                                 @case('PENDIENTE')
-                                <span class="badge badge-light-warning inv-status" style="display: block">PENDIENTE</span>
+                                <span class="display badge badge-light-warning inv-status " style="display: block">PENDIENTE</span>
 
                                 @break
                                 @case('ENTREGADO')
-                                <span class="badge badge-light-success inv-status" style="display: block">ENTREGADO</span>
+                                <span class="display badge badge-light-success inv-status" style="display: block">ENTREGADO</span>
 
                                 @break
 
                                 @default
                                 @endswitch
                             </td>
+                            <td>
+                                @switch($order->statusend)
+                                @case('COMPLETO')
+                                <span class="text-center badge badge-light-warning inv-status" style="display: block">COMPLETO</span>
 
+                                @break
+                                @case('INCOMPLETO')
+                                <span class="display badge badge-light-success inv-status">INCOMPLETO</span>
+
+                                @break
+
+                                @default
+                                @endswitch
+                            </td>
                             <td class="text-center">
                                 <ul class="table-controls">
                                     <form action="{{route('orders.destroy', $order)}}" method="POST" class="casino">

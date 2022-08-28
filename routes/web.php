@@ -36,6 +36,9 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->name('get_products_by_id');
+Route::get('orders/culminated',[OrderController::class,'culminated']);
+Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->name('orders.ordercompleted');
+Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->name('orders.orderincompleted');
 
 Route::resource('categories',CategoryController::class)->names('categories');
 Route::resource('measures',UnitMeasureController::class)->names('measures');

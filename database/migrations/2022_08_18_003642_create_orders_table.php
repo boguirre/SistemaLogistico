@@ -18,8 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->dateTime('date_order');
+            $table->dateTime('date_order_delivery');
             $table->decimal('total');
-            $table->enum('status',['VALID','CANCELED'])->default('VALID');
+            $table->enum('status',['PENDIENTE','ENTREGADO'])->default('PENDIENTE');
+            $table->enum('statusend',['COMPLETO','INCOMPLETO'])->nullable();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();

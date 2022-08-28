@@ -1,8 +1,14 @@
 @extends('layouts.panel')
 
 @section('content')
+<br>
+<br>
+
+
 <div class="content-wrapper">
-    <div class="page-header">
+
+    
+    {{-- <div class="page-header">
         <h3 class="page-title">
             Detalles de venta
         </h3>
@@ -13,10 +19,33 @@
                 <li class="breadcrumb-item active" aria-current="page">Detalles de venta</li>
             </ol>
         </nav>
-    </div>
+    </div> --}}
+
     <div class="row">
         <div class="col-12">
             <div class="card">
+                @if ($order->statusend != 'COMPLETO' && $order->statusend != 'INCOMPLETO'  )
+
+                <div class="card-footer text-muted">
+
+                <a><form action="{{route('orders.ordercompleted', $order)}}" class=" aceptar" method="POST" style="float: right;">
+                @csrf
+                <button class="btn w-full" type="submit" style="color:aliceblue; background-color: #3d9970">
+                    Pedido Completo</button>
+                </form></a>
+                <a >
+                <form action="{{route('orders.orderincompleted', $order)}}" class=" " method="POST" style="float: right;">
+                        @csrf
+                        <button class="btn btn-danger w-full" type="submit" >
+                            Pedido Incompleto</button>
+                </form></a>
+                <h4>EL PEDIDO ACTUALMENTE LLEGO EN UN ESTADO:</h4>
+                </div>
+                <div class="card-footer text-muted">
+                </div>
+                @else
+               
+                @endif
                 <div class="card-body">
                     <div class="form-group row">
                         <div class="col-md-4 text-center">
@@ -34,7 +63,7 @@
                     </div>
                     <br /><br />
                     <div class="form-group">
-                        <h4 class="card-title">Detalles de venta</h4>
+                        <h4 class="card-title">Detalles de Pedido</h4>
                         <div class="table-responsive col-md-12">
                             <table id="saleDetails" class="table">
                                 <thead>
