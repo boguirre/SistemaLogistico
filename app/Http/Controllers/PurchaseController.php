@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Modulo compras')->only('index','create','store','update','edit','show');
+    }
     /**
      * Display a listing of the resource.
      *

@@ -45,7 +45,11 @@ class UserController extends Controller
             
         ]);
 
-        $user = User::create($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
 
         return redirect()->route('users.index')->with('guardar', 'ok');
     }

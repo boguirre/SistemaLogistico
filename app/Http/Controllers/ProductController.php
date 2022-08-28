@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Modulo Productos')->only('index','create','store','update','edit');
+    }
     
     public function index()
     {
