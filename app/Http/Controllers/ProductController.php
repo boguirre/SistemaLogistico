@@ -36,7 +36,9 @@ class ProductController extends Controller
             'unit_measure_id' => 'required',
             'category_id' => 'required',
             'code' => 'required|max:50',
-            'stock' => 'numeric|required|min:1|max:99999999'
+            'stock' => 'numeric|required|min:1|max:99999999',
+            'price'=>'required|numeric',
+            'stockmin'=>'required|numeric'
             
         ]);
 

@@ -10,7 +10,7 @@
 
     <div class="col-md-12">
         <label for="code" class="form-label">Codigo</label>
-        <input type="text" class="form-control" id="code" name="code" style="color: white">
+        <input type="text" class="form-control" id="code" name="code" style="color: white" value="{{old('code')}}">
         @error('code')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror 
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-6">
             <label for="name" class="form-label">Nombre</label>
-            <input type="name" class="form-control" id="name" name="name">
+            <input type="name" class="form-control" id="name" name="name" value="{{old('name')}}">
             @error('name')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
@@ -45,13 +45,26 @@
         </div>
         
         <div class="col-md-6">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="stock" class="form-control" id="stock" name="stock">
+            <label for="stock" class="form-label">Stock:</label>
+            <input type="number" class="form-control" id="stock" name="stock"  min="0" value="{{old('stock')}}">
             @error('stock')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
         </div>
-        
+        <div class="col-md-6">
+            <label for="stockmin" class="form-label">Stock Minimo:</label>
+            <input type="number" class="form-control" id="stockmin" name="stockmin"  min="0" value="{{old('stockmin')}}">
+            @error('stockmin')
+                <strong class="text-sm text-red-600">{{$message}}</strong>
+            @enderror 
+        </div>
+        <div class="col-md-6">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{old('price')}}">
+            @error('price')
+                <strong class="text-sm text-red-600">{{$message}}</strong>
+            @enderror 
+        </div>
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary" style="float: right;">Guardar Información</button>

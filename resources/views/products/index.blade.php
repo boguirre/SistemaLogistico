@@ -33,6 +33,7 @@
                                             <th>Categoria</th>
                                             <th>Proveedor</th>
                                             <th>Unidad De Medida</th>
+                                            <th>Stock</th>
 
                                             <th  class="text-center dt-no-sorting">Acciones</th>
                                             
@@ -54,6 +55,18 @@
                                             <td>{{$product->categories->name}}</td>
                                             <td>{{$product->supliers->name}}</td>
                                             <td>{{$product->measures->name}}</td>
+                                            <td>
+                                                
+                                                @if($product->stock > $product->stockmin)
+                                                <span class="badge badge-light-success inv-status" style="display: block">{{$product->stock}} </span>
+                
+                                                @else
+                                                <span class="badge badge-light-danger inv-status" style="display: block">{{$product->stock }}</span>
+                
+                                                @endif
+                                                
+                                                
+                                                </td>
 
                                             <td class="text-center">
                                                 <ul class="table-controls">

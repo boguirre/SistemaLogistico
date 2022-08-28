@@ -1,3 +1,8 @@
+<?php
+   use Illuminate\Support\Str;
+//    use Illuminate\Http\Request;
+
+?>
 <div class="sidebar-wrapper sidebar-theme">
 
     <nav id="sidebar">
@@ -44,9 +49,10 @@
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Articulos</span></div>
             </li>
+            {{-- <li class="{{ (Request::is('products/*') || Request::is('products') || Request::is('product/*') ? 'active' : '') }}"><a href="{{url('products')}}"><i class="fa fa-code-fork"></i>&nbsp; Products</a></li> --}}
 
-            <li class="menu">
-                <a href="#invoice" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <li class="menu ">
+                <a href="#invoice" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('products') || Request::is('categories')||Request::is('measures')||Request::is('supliers') ? 'true' : '') }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                         <span>Productos</span>
@@ -55,25 +61,25 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="invoice" data-bs-parent="#accordionExample">
-                    <li>
+                <ul class="collapse submenu list-unstyled {{ (Request::is('products')||Request::is('categories')||Request::is('measures')||Request::is('supliers') ? 'show' : '') }}" id="invoice" data-bs-parent="#accordionExample">
+                    <li class="{{ (Request::is('categories') ? 'active' : '') }}">
 
                         <a href="{{route('categories.index')}}"> Tipo Producto </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::is('measures') ? 'active' : '') }}">
                         <a href="{{route('measures.index')}}"> Unidad de Medida </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::is('products') ? 'active' : '') }}">
                         <a href="{{route('products.index')}}"> Producto </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::is('supliers') ? 'active' : '') }}">
                         <a href="{{route('supliers.index')}}"> Proveedores </a>
                     </li>                            
                 </ul>
             </li>
 
-            <li class="menu">
-                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <li class="menu ">
+                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('purchases') ? 'true' : '') }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                         <span>Compras</span>
@@ -82,8 +88,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="ecommerce" data-bs-parent="#accordionExample">
-                    <li>
+                <ul class="collapse submenu list-unstyled {{ (Request::is('purchases') ? 'show' : '') }}" id="ecommerce" data-bs-parent="#accordionExample">
+                    <li class="{{ (Request::is('purchases') ? 'active' : '') }}">
                         <a href="{{route('purchases.index')}}"> Mis compras </a>
                     </li>
                     <li>
@@ -102,7 +108,7 @@
             </li>
 
             <li class="menu">
-                <a href="#blog" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#blog" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('orders/culminated')||Request::is('orders/ontime')||Request::is('orders/untimely') ? 'true' : '') }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
                         <span>Pedidos</span>
@@ -111,17 +117,18 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled" id="blog" data-bs-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{ (Request::is('orders/culminated')||Request::is('orders/ontime')||Request::is('orders/untimely') ? 'show' : '') }}" id="blog" data-bs-parent="#accordionExample">
                     <li>
                         <a href="{{route('orders.index')}}"> Lista de Pedidos </a>
                     </li>
-                    <li>
+
+                    <li class="{{ (Request::is('orders/culminated') ? 'active' : '') }}">
                         <a href="{{route('orders.culminated')}}"> Pedidos Entregados </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::is('orders/ontime') ? 'active' : '') }}">
                         <a href="{{route('orders.ontime')}}"> Pedidos A Tiempo </a>
                     </li>
-                    <li>
+                    <li class="{{ (Request::is('orders/untimely') ? 'active' : '') }}"> 
                         <a href="{{route('orders.untimely')}}"> Pedido A Destiempo </a>
                     </li>                            
                     {{-- <li>
@@ -129,7 +136,7 @@
                     </li> --}}
                 </ul>
             </li>
-            <li class="menu">
+            <li class="menu {{ (Request::is('employees') ? 'active' : '') }}">
                 <a href="{{route('employees.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> --}}
@@ -139,7 +146,7 @@
                     </div>
                 </a>
             </li>
-            <li class="menu">
+            <li class="menu {{ (Request::is('roles') ? 'active' : '') }}">
                 <a href="{{route('roles.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> --}}
@@ -150,7 +157,7 @@
                 </a>
             </li>
 
-            <li class="menu">
+            <li class="menu {{ (Request::is('areas') ? 'active' : '') }}">
                 <a href="{{route('areas.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> --}}
@@ -161,7 +168,7 @@
                 </a>
             </li>
 
-            <li class="menu">
+            <li class="menu {{ (Request::is('users') ? 'active' : '') }}">
                 <a href="{{route('users.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> --}}
