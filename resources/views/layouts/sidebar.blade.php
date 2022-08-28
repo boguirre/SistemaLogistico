@@ -116,17 +116,17 @@
                         <a href="{{route('orders.index')}}"> Lista de Pedidos </a>
                     </li>
                     <li>
-                        <a href="./app-blog-list.html"> List </a>
+                        <a href="{{route('orders.culminated')}}"> Pedidos Entregados </a>
                     </li>
                     <li>
-                        <a href="./app-blog-post.html"> Post </a>
+                        <a href="{{route('orders.ontime')}}"> Pedidos A Tiempo </a>
                     </li>
                     <li>
-                        <a href="./app-blog-create.html"> Create </a>
+                        <a href="{{route('orders.untimely')}}"> Pedido A Destiempo </a>
                     </li>                            
-                    <li>
+                    {{-- <li>
                         <a href="./app-blog-edit.html"> Edit </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li class="menu">

@@ -148,6 +148,20 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('editar', 'ok');
     }
 
+    public function ontime(){
+
+        $orders =Order::where('status_delivery','=','TIEMPO')->get();
+
+        return view('orders.ontime.index',compact('orders'));
+
+    }
+
+    public function untimely(){
+        $orders =Order::where('status_delivery','=','DESTIEMPO')->get();
+
+        return view('orders.untimely.index',compact('orders'));
+    }
+
 
 
 
