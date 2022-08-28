@@ -76,7 +76,10 @@
     {{-- <form class="row g-3"> --}}
         <div class="col-md-12">
             <label for="name" class="form-label">Nombre</label>
-            <input type="name" class="form-control" id="name" name="name"> 
+            <input type="name" class="form-control" id="name" name="name">
+            @error('name')
+                <strong class="text-sm text-red-600">{{$message}}</strong>
+            @enderror  
         </div>
         {{-- <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Password</label>

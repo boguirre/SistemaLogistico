@@ -14,7 +14,10 @@
     {{-- <form class="row g-3"> --}}
         <div class="col-md-12">
             <label for="name" class="form-label">Nombre</label>
-            <input type="name" class="form-control" id="name" name="name" value="{{$category->name}}"> 
+            <input type="name" class="form-control" id="name" name="name" value="{{$category->name}}">
+            @error('name')
+                <strong class="text-sm text-red-600">{{$message}}</strong>
+            @enderror  
         </div>
         
         <div class="col-12">
