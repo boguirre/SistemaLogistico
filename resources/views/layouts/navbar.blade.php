@@ -161,7 +161,9 @@
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="avatar-container">
                         <div class="avatar avatar-sm avatar-indicators avatar-online">
-                            <img alt="avatar" src="/assets/img/profile-30.png" class="rounded-circle">
+                            <img class=" rounded-circle" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+
+                            {{-- <img alt="avatar" src="/assets/img/profile-30.png" class="rounded-circle"> --}}
                         </div>
                     </div>
                 </a>
