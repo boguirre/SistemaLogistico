@@ -41,6 +41,7 @@ Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id']
 Route::get('orders/culminated',[OrderController::class,'culminated'])->middleware('can:Modulo Pedidos')->name('orders.culminated');
 Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');
 Route::get('orders/untimely',[OrderController::class,'untimely'])->middleware('can:Modulo Pedidos')->name('orders.untimely');
+Route::get('purchases/report',[PurchaseController::class,'reportpurchase'])->name('purchases.report');
 
 Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
 Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');

@@ -81,7 +81,7 @@
             </li>
 
             <li class="menu ">
-                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('purchases') ? 'true' : '') }}" class="dropdown-toggle">
+                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('purchases')|Request::is('purchases/report') ? 'true' : '') }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                         <span>Compras</span>
@@ -90,12 +90,12 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ (Request::is('purchases') ? 'show' : '') }}" id="ecommerce" data-bs-parent="#accordionExample">
+                <ul class="collapse submenu list-unstyled {{ (Request::is('purchases')||Request::is('purchases/report') ? 'show' : '') }}" id="ecommerce" data-bs-parent="#accordionExample">
                     <li class="{{ (Request::is('purchases') ? 'active' : '') }}">
                         <a href="{{route('purchases.index')}}"> Mis compras </a>
                     </li>
-                    <li>
-                        <a href="./app-ecommerce-product.html"> Reportes </a>
+                    <li class="{{ (Request::is('purchases/report') ? 'active' : '') }}">
+                        <a href="{{route('purchases.report')}}"> Reportes </a>
                     </li>
                     {{-- <li>
                         <a href="./app-ecommerce-product-list.html"> List </a>

@@ -113,4 +113,9 @@ class PurchaseController extends Controller
     {
         //
     }
+
+    public function reportpurchase(){
+
+        return view('purchases.report.index');
+    }
 }
