@@ -42,8 +42,8 @@ Route::get('orders/culminated',[OrderController::class,'culminated'])->middlewar
 Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');
 Route::get('orders/untimely',[OrderController::class,'untimely'])->middleware('can:Modulo Pedidos')->name('orders.untimely');
 
-Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->name('orders.ordercompleted');
-Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->name('orders.orderincompleted');
+Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
+Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');
 
 Route::resource('categories',CategoryController::class)->middleware('can:Modulo Categorias')->names('categories');
 Route::resource('measures',UnitMeasureController::class)->middleware('can:Modulo Unidad de Medida')->names('measures');
