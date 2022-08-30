@@ -9,6 +9,7 @@ use App\Models\Suplier;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -116,6 +117,23 @@ class PurchaseController extends Controller
 
     public function reportpurchase(){
 
-        return view('purchases.report.index');
+
+        $getyearmonth = Carbon::now('America/Lima')->format('Y-m');
+
+
+        $orders= DB::select('call spcomprasmes(?)',array($getyearmonth));
+        
+        $data=[];
+        foreach($orders as $order){
+                 
+               $data['label'][] = $order->estado;
+
+               $data['data'][] = $order->cantidad;
+
+        }
+
+        $data['data'] = json_encode($data);
+
+        return view('purchases.report.index',$data);
     }
 }

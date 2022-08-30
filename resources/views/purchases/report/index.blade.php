@@ -146,7 +146,7 @@
 <div class="col-xl-4 col-lg-5">
   <div class="card shadow mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold" style="color: #4C5755">Asistencia y Tardanzas por mes</h6>
+          <h6 class="m-0 font-weight-bold" style="color: #4C5755">COMPRAS DEL MES CON ESTADOS:</h6>
           
       </div>
       <div class="card-body">
@@ -155,6 +155,7 @@
           </div>
           <br>
       </div>
+        
   </div>
 </div>
 
@@ -167,7 +168,39 @@
 
 @section('scripts')
 
+<script>
+    $(document).ready(function(){
 
+        const cData = JSON.parse(`<?php echo $data; ?>`)
+        console.log(cData);
+         
+        const ctx = document.getElementById('myChartPai').getContext('2d');
+         
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+            labels:['VALID','CANCELED'],
+            datasets: [{
+                label: '# De Asistencias',
+                data:cData.data,
+                backgroundColor: [
+                
+                    '#4F996B',
+                    '#CC5952',
+                ],
+
+                borderWidth:1
+               
+            }]
+        },
+       
+
+        });
+
+
+    });
+
+</script>
 
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
@@ -207,7 +240,7 @@
     });
 </script>
 
-<script>
+{{-- <script>
         $(document).ready(function(){
 
     const ctx = document.getElementById('myChartPai').getContext('2d');
@@ -233,5 +266,5 @@
     });
 });
 
-</script>
+</script> --}}
 @endsection
