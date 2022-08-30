@@ -94,12 +94,14 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:50',
-            'email' => 'required|email',
-            'password' => 'required|max:50|min:6',
-            
+            'email' => 'required|email'
         ]);
 
-        $user->update($request->all());
+        $user->update([
+            $user->name = $request->name,
+            $user->email = $request->email,
+            $user->password = bcrypt($request->password)
+        ]);
 
         return redirect()->route('users.index');
     }

@@ -30,7 +30,7 @@
 
         <div class="col-md-12">
             <label for="password" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" value="{{$user->password}}">
+            <input type="password" class="form-control" id="password" name="password">
             @error('password')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror  
