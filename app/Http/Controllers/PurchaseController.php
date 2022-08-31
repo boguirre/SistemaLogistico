@@ -134,6 +134,38 @@ class PurchaseController extends Controller
 
         $data['data'] = json_encode($data);
 
-        return view('purchases.report.index',$data);
+        $totalpurchases=0;
+        $totalpurchases=$this->getpurchasestotal($totalpurchases);
+
+        $total=0;
+        $total= $this->gettotalprices($total);
+
+        $purchases=0;
+        $purchases=$this->getpurchases($purchases);
+
+        return view('purchases.report.index',compact('totalpurchases','total','purchases'),$data);
+    }
+
+
+    public function getpurchasestotal(){
+        $totalpurchases = Purchase::where(('purchases.status'),'=','VALID')->get()->count();
+
+        return $totalpurchases;
+
+    }
+
+    public function gettotalprices(){
+        $total = Purchase::sum('total');
+
+        return $total;
+    }
+
+    public function getpurchases(){
+
+        $mes = Carbon::now('America/Lima')->format('m');
+        $year = Carbon::now('America/Lima')->format('Y');
+        $purchases = Purchase::where('status','VALID')->whereMonth(('purchases.date_purchase'),'=',$mes)->whereYear(('purchases.date_purchase'),'=',$year)->get()->count();
+
+        return $purchases;
     }
 }

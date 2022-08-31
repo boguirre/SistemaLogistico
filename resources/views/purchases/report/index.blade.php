@@ -53,7 +53,7 @@
                     <div class="col mr-2">
                         <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
                             Total de Compras</div>
-                        <div class="h3 mb-0 font-weight-bold text-gray-800">10</div>
+                        <div class="h3 mb-0 font-weight-bold text-gray-800">{{$totalpurchases}}</div>
                     </div>
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar-alt fa-2x " style="color:white!important"></i> --}}
@@ -73,7 +73,7 @@
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
                           Compras del Mes</div>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">100</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">{{$purchases}}</div>
                   </div>
                   <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -94,7 +94,7 @@
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
                         Gastos de Compras</div>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">s/.500000.000</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">s/.{{number_format($total,2)}} </div>
                   </div>
                   <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
