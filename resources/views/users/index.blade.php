@@ -112,3 +112,43 @@
     
 </div>    
 @endsection
+
+@section('scripts')
+@if(session('guardar'))
+ 
+<script>
+
+     Swal.fire(
+     'Registrado!',
+     'Los datos se registraron.',
+     'success'
+     )
+
+ </script>
+@endif
+
+@if(session('eliminar'))
+ 
+    <script>
+
+        Swal.fire(
+        'Eliminado!',
+        'Los datos se eliminaron.',
+        'success'
+        )
+
+    </script>
+   @endif
+   @if(session('editar'))
+ 
+   <script>
+
+        Swal.fire(
+        'Actualizados!',
+        'Los datos se actualizaron.',
+        'success'
+        )
+
+    </script>
+   @endif
+@endsection

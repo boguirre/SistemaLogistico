@@ -48,8 +48,9 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->save();
+        $user->password = ($request->password);
+        $user->save();// No es necesario poner Bycrit ya que en el Modelo hay un metodo
+        // que encripta todo los datos enviados en un Input con name password.
 
         return redirect()->route('users.index')->with('guardar', 'ok');
     }
@@ -100,7 +101,8 @@ class UserController extends Controller
         $user->update([
             $user->name = $request->name,
             $user->email = $request->email,
-            $user->password = bcrypt($request->password)
+            $user->password = ($request->password) // No es necesario poner Bycrit ya que en el Modelo hay un metodo
+                                                   // que encripta todo los datos enviados en un Input con name password.
         ]);
 
         return redirect()->route('users.index');
