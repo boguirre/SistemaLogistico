@@ -143,7 +143,10 @@ class PurchaseController extends Controller
         $purchases=0;
         $purchases=$this->getpurchases($purchases);
 
-        return view('purchases.report.index',compact('totalpurchases','total','purchases'),$data);
+        $reporte="";
+        $report=$this->reporte($reporte);
+
+        return view('purchases.report.index',compact('totalpurchases','total','purchases'),$data+$report);
     }
 
 
@@ -167,5 +170,33 @@ class PurchaseController extends Controller
         $purchases = Purchase::where('status','VALID')->whereMonth(('purchases.date_purchase'),'=',$mes)->whereYear(('purchases.date_purchase'),'=',$year)->get()->count();
 
         return $purchases;
+    }
+
+
+    public function reporte(){
+        $salesByMonths = DB::select(
+            DB::raw("SELECT coalesce(total,0)as total
+                FROM (SELECT 'january' AS month UNION SELECT 'february' AS month UNION SELECT 'march' AS month UNION SELECT 'april' AS month UNION SELECT 'may' AS month UNION SELECT 'june' AS month UNION SELECT 'july' AS month UNION SELECT 'august' AS month UNION SELECT 'september' AS month UNION SELECT 'october' AS month UNION SELECT 'november' AS month UNION SELECT 'december' AS month ) m LEFT JOIN (SELECT MONTHNAME(date_purchase) AS MONTH, COUNT(*) AS purchases, SUM(total)AS total 
+                FROM purchases WHERE year(date_purchase	)= 2022
+                GROUP BY MONTHNAME(date_purchase),MONTH(date_purchase) 
+                ORDER BY MONTH(date_purchase)) c ON m.MONTH =c.MONTH;")
+        );
+
+        
+        $report=[];
+        foreach($salesByMonths as $salesByMonth){
+                 
+            //    $report['label'][] = $salesByMonth->mes;
+
+                $report['report'][] = $salesByMonth->total;
+
+          }
+
+         $report['report'] = json_encode($report);
+
+         $reporte=$report;
+
+         return $reporte;
+
     }
 }
