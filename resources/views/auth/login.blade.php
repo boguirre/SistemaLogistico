@@ -68,7 +68,7 @@
                                         <div class="form-check form-check-primary form-check-inline">
                                             <input class="form-check-input me-3" type="checkbox" id="form-check-default">
                                             <label class="form-check-label" for="form-check-default" for="remember_me" id="remember_me" name="remember">
-                                                Remember me
+                                                Recordar Contraseña
                                             </label>
                                         </div>
                                     </div>
