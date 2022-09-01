@@ -9,6 +9,8 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class OrderController extends Controller
 {
@@ -161,8 +163,16 @@ class OrderController extends Controller
 
         return view('orders.untimely.index',compact('orders'));
     }
-
-
-
-
+    
+    public function pdf(Order $order)
+    {
+        $subtotal = 0 ;
+        $orderDetails = $order->orderDetails;
+        foreach ($orderDetails as $orderDetail) {
+            $subtotal += $orderDetail->quantity*$orderDetail->price;
+        }
+        $pdf = Pdf::loadView('orders.pdf.index', compact('order', 'subtotal', 'orderDetails'));
+        return $pdf->download('Reporte_de_Pedido_'.$order->id.'.pdf');
+        
+    }
 }

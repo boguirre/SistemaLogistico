@@ -42,9 +42,11 @@ Route::get('orders/culminated',[OrderController::class,'culminated'])->middlewar
 Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');
 Route::get('orders/untimely',[OrderController::class,'untimely'])->middleware('can:Modulo Pedidos')->name('orders.untimely');
 Route::get('purchases/report',[PurchaseController::class,'reportpurchase'])->name('purchases.report');
+Route::get('/purchases/{purchase}/pdf',[PurchaseController::class, 'pdf'])->name('purchases.pdf');
 
 Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
 Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');
+Route::get('/orders/{order}/pdf',[OrderController::class, 'pdf'])->name('orders.pdf');
 
 Route::resource('categories',CategoryController::class)->middleware('can:Modulo Categorias')->names('categories');
 Route::resource('measures',UnitMeasureController::class)->middleware('can:Modulo Unidad de Medida')->names('measures');
