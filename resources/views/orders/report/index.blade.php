@@ -52,8 +52,8 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                            Total de Compras</div>
-                        <div class="h3 mb-0 font-weight-bold text-gray-800">100 </div>
+                            Total Pedidos</div>
+                        <div class="h3 mb-0 font-weight-bold text-gray-800">{{$orderstotal}} </div>
                     </div>
                     <div class="col-auto">
                         {{-- <i class="fas fa-calendar-alt fa-2x " style="color:white!important"></i> --}}
@@ -72,8 +72,8 @@
               <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                          Compras del Mes</div>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">100</div>
+                          Total de pedidos Completos</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">{{$orderscompleted}}</div>
                   </div>
                   <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -93,8 +93,8 @@
               <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                        Gastos de Compras</div>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">s/.20000 </div>
+                        Total De Pedidos Incompletos:</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">{{$ordersincompleted}}</div>
                   </div>
                   <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -130,7 +130,7 @@
     <div class="card shadow mb-4">
         <div
             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold" style="color: #4C5755">Total De Compras Por Mes</h6>
+            <h6 class="m-0 font-weight-bold" style="color: #4C5755">Total De Pedidos por Mes</h6>
             
         </div>
         <div class="card-body">
@@ -157,7 +157,7 @@
       </div>
         
   </div>
-</div>
+ </div>
 
 
 </div>
@@ -168,6 +168,95 @@
 
 @section('scripts')
 
+<script>
+    $(document).ready(function(){
+
+        const cData = JSON.parse(`<?php echo $data; ?>`)
+        console.log(cData);
+         
+        const ctx = document.getElementById('myChartPai').getContext('2d');
+         
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+            labels:['TIEMPO','DESTIEMPO'],
+            datasets: [{
+                label: '# De Asistencias',
+                data:cData.data,
+                backgroundColor: [
+                
+                    '#4F996B',
+                    '#CC5952',
+                ],
+
+                borderWidth:1,
+               
+            }]
+        },
+       
+
+        });
 
 
+    });
+
+</script>
+
+<script>
+    $(document).ready(function(){
+
+        const cData = JSON.parse(`<?php echo $report ; ?>`)
+        console.log(cData);
+         
+        const ctx = document.getElementById('myChart').getContext('2d');
+         
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels:["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+            datasets: [{
+                label: '# De Total De Pedidos',
+                data:cData.report,
+                backgroundColor: [
+                    '#e1bee7',
+                    '#e1bHJH',
+                    '#e1bee7',
+                    'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    '#e1bee7',
+                    '#e1bHJH',
+                    '#e1bee7',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+
+                borderWidth:1,
+               
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: {
+                    beginAtZero: true
+                }
+            }
+        },
+        
+
+        });
+
+
+    });
+
+</script>
 @endsection

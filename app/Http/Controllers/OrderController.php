@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -173,7 +173,100 @@ class OrderController extends Controller
     }
 
     public function reportorder(){
-        return view('orders.report.index');
+
+        $getyearmonth = Carbon::now('America/Lima')->format('Y-m');
+
+
+        $orders= DB::select('call sppedidosmes(?)',array($getyearmonth));
+        
+
+        $data=[];
+        foreach($orders as $order){
+                 
+               $data['label'][] = $order->estado;
+
+               $data['data'][] = $order->cantidad;
+
+        }
+
+        $data['data'] = json_encode($data);
+
+        $orderscompleted=0;
+        $orderscompleted= $this->getorderscompleted($orderscompleted);
+
+
+        $ordersincompleted=0;
+        $ordersincompleted= $this->getordersincompleted($ordersincompleted);
+
+        $orderstotal=0;
+
+        $orderstotal=$this->getorderstotal($orderstotal);
+
+        $reporte="";
+        $report=$this->reporte($reporte);
+
+        return view('orders.report.index',compact('orderscompleted','ordersincompleted','orderstotal'),$data+$report);
 
     }
+    public function getorderscompleted(){
+
+        $mes = Carbon::now('America/Lima')->format('m');
+        $year = Carbon::now('America/Lima')->format('Y');
+        $orderscompleted = Order::where('statusend','COMPLETO')->whereMonth(('orders.date_order'),'=',$mes)->whereYear(('orders.date_order'),'=',$year)->get()->count();
+
+        return $orderscompleted;
+    }
+
+    public function getordersincompleted(){
+
+        $mes = Carbon::now('America/Lima')->format('m');
+        $year = Carbon::now('America/Lima')->format('Y');
+        $ordersincompleted = Order::where('statusend','INCOMPLETO')->whereMonth(('orders.date_order'),'=',$mes)->whereYear(('orders.date_order'),'=',$year)->get()->count();
+
+        return $ordersincompleted;
+    }
+
+    public function getorderstotal(){
+
+        $mes = Carbon::now('America/Lima')->format('m');
+        $year = Carbon::now('America/Lima')->format('Y');
+        $orderstotal = Order::whereMonth(('orders.date_order'),'=',$mes)->whereYear(('orders.date_order'),'=',$year)->get()->count();
+
+        return $orderstotal;
+    }
+
+    public function reporte(){
+        $year = Carbon::now('America/Lima')->format('Y');
+
+        $salesByMonths = DB::select(
+            DB::raw(" SELECT coalesce(total,0) as total FROM (SELECT 'january' AS month UNION SELECT 'february' 
+            AS month UNION SELECT 'march' AS month UNION SELECT 'april' AS month UNION SELECT 'may' AS month UNION SELECT 'june'
+             AS month UNION SELECT 'july' AS month UNION SELECT 'august' AS month UNION SELECT 'september' AS month UNION SELECT 'october'
+              AS month UNION SELECT 'november' AS month UNION SELECT 'december' AS month ) m LEFT JOIN (SELECT MONTHNAME(date_order) AS MONTH,
+               COUNT(*) AS orders, COUNT(orders.id) AS total FROM orders WHERE year(date_order)= $year GROUP BY MONTHNAME(date_order),
+               MONTH(date_order) ORDER BY MONTH(date_order)) c ON m.MONTH =c.MONTH;
+            ")
+        );
+        
+        
+        $report=[];
+        foreach($salesByMonths as $salesByMonth){
+                 
+            //    $report['label'][] = $salesByMonth->mes;
+
+                $report['report'][] = $salesByMonth->total;
+
+          }
+
+         $report['report'] = json_encode($report);
+
+         $reporte=$report;
+
+         return $reporte;
+
+    }
+
+
+
+
 }
