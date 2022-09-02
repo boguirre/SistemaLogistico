@@ -71,7 +71,7 @@
                                             <td class="text-center">
                                                 <ul class="table-controls">
 
-                                                    @if($product->orders->count() < 0)
+                                                    @if($product->orders->count() < 1)
 
                                                     <form action="{{route('products.destroy', $product)}}" method="POST" class="casino">
                                                         @csrf
