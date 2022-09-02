@@ -47,6 +47,7 @@ Route::get('/purchases/{purchase}/pdf',[PurchaseController::class, 'pdf'])->name
 Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
 Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');
 Route::get('/orders/{order}/pdf',[OrderController::class, 'pdf'])->name('orders.pdf');
+Route::get('orders/report',[OrderController::class,'reportorder'])->name('orders.report');
 
 Route::resource('categories',CategoryController::class)->middleware('can:Modulo Categorias')->names('categories');
 Route::resource('measures',UnitMeasureController::class)->middleware('can:Modulo Unidad de Medida')->names('measures');

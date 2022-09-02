@@ -14,11 +14,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $orders = Order::where('status','=','PENDIENTE')->get();
@@ -174,5 +170,10 @@ class OrderController extends Controller
         $pdf = Pdf::loadView('orders.pdf.index', compact('order', 'subtotal', 'orderDetails'));
         return $pdf->download('Reporte_de_Pedido_'.$order->id.'.pdf');
         
+    }
+
+    public function reportorder(){
+        return view('orders.report.index');
+
     }
 }

@@ -25,4 +25,10 @@ class Product extends Model
         return $this->belongsTo(Suplier::class,'suplier_id');
 
     }
+
+    public function orders(){
+        return $this->hasMany(OrderDetail::class);
+    }
+
+
 }
