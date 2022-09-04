@@ -33,6 +33,8 @@ class EmployeeController extends Controller
         $area = Area::pluck('name','id');
 
         return view('employees.create',compact('employeetype','area'));
+   
+   
     }
 
     /**
@@ -51,8 +53,7 @@ class EmployeeController extends Controller
             'numberdocument' => 'required|max:11',
             'employee_type_id' => 'required',
             'area_id' => 'required',
-            'datebirth' => 'required'
-            
+            'datebirth' => 'required'            
         ]);
     
         $employee = Employee::create($request->all());
