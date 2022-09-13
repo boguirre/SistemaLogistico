@@ -29,6 +29,16 @@
 
     {{-- <script src="/plugins/src/apex/apexcharts.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+    <script>
+        var botmanWidget = {
+            aboutText: 'ssdsd',
+            introMessage: "✋ Hi! I'm form Expert Rohila"
+        };
+    </script>
+  
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+      
 </head>
 <body class="layout-boxed">
     <!-- BEGIN LOADER -->

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\BotManController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
@@ -61,3 +62,4 @@ Route::resource('areas',AreaController::class)->middleware('can:Modulo Areas')->
 Route::resource('users',UserController::class)->middleware('can:Modulo Usuarios')->names('users');
 Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->middleware('can:Modulo Roles')->name('users.roles');
 Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->middleware('can:Modulo Roles')->name('users.updaterole');
+Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
