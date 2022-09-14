@@ -6,7 +6,7 @@
                     <!-- BREADCRUMB -->
                     <div class="page-meta">
                         {{-- <div class="col text-right"> --}}
-                        <a href="{{url('/users/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Usuario</a>
+                        <a href="{{route('users.create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Usuario</a>
                           {{-- </div> --}}
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">

@@ -22,6 +22,9 @@ class BotManController extends Controller
   
             if ($message == 'hi') {
                 $this->askName($botman);
+            }else if($message == 'joan'){
+                $this->joanName($botman);
+
             }else{
                 $botman->reply("write 'hi' for testing...");
             }
@@ -37,6 +40,23 @@ class BotManController extends Controller
 
         return $juan;
     }
+    public function juan(){
+        return 'JOAN';
+    }
+
+    public function joanName($botman)
+    {
+        $botman->ask('Esta seguro?', function(Answer $answer) {
+           
+            // $name = $answer->getText();
+            $juan= User::all()->count();
+            $nombrepru= auth()->user()->name;
+
+            $this->say('Nice to meet you '.'    '. $juan.'    '.$nombrepru);
+        });
+    }
+
+
   
     public function askName($botman)
     {
@@ -44,8 +64,9 @@ class BotManController extends Controller
            
             $name = $answer->getText();
             $juan= User::all()->count();
+            $nombrepru= auth()->user()->name;
 
-            $this->say('Nice to meet you '. $name.'    '. $juan);
+            $this->say('Nice to meet you '. $name.'    '. $juan.'    '.$nombrepru);
         });
     }
 }
