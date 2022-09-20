@@ -23,10 +23,10 @@
     <link href="{{asset('src/assets/css/dark/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="/plugins/src/table/datatable/datatables.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
+    
     <link rel="stylesheet" type="text/css" href="{{asset('/plugins/css/light/table/datatable/dt-global_style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/plugins/css/dark/table/datatable/dt-global_style.css')}}">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    {{-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
     <py-env>
         - numpy
         - pandas
@@ -36,7 +36,7 @@
         - scipy
         - panel==0.13.1a2
 
-      </py-env>
+      </py-env> --}}
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
