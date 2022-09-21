@@ -4,7 +4,9 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PredictedController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RoleController;
@@ -63,3 +65,11 @@ Route::resource('users',UserController::class)->middleware('can:Modulo Usuarios'
 Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->middleware('can:Modulo Roles')->name('users.roles');
 Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->middleware('can:Modulo Roles')->name('users.updaterole');
 Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
+
+Route::get('indicators/tiempo',[IndicatorController::class,'pedidosTiempo'])->name('indicators.tiempo');
+Route::get('indicators/completo',[IndicatorController::class,'pedidosCompletos'])->name('indicators.completo');
+Route::get('predicted',[PredictedController::class,'index'])->name('predicted.index');
+Route::get('predicted/completo',[PredictedController::class,'predictedcompleted'])->name('predicted.completo');
+Route::get('predicted/tiempo',[PredictedController::class,'predictedtime'])->name('predicted.tiempo');
+Route::get('indicators/export/', [IndicatorController::class, 'exportAllPediCompletos'])->name('indicators.export');
+Route::get('indicators/exporttiempo/', [IndicatorController::class, 'exportAllPediTiempo'])->name('indicators.exporttiempo');

@@ -26,8 +26,10 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/plugins/css/light/table/datatable/dt-global_style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/plugins/css/dark/table/datatable/dt-global_style.css')}}">
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <py-env>
+    @yield('css')
+
+    {{-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> --}}
+    {{-- <py-env>
         - numpy
         - pandas
         - matplotlib
@@ -36,32 +38,21 @@
         - scipy
         - panel==0.13.1a2
 
-      </py-env>
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js"></script>
-    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.js"></script>
-    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@holoviz/panel@0.13.0/dist/panel.min.js"></script>
-    <script type="text/javascript">
-      Bokeh.set_log_level("info");
-    </script>
+      </py-env> --}}
+   
     
     {{-- <script src="/plugins/src/apex/apexcharts.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css">
     <script>
         var botmanWidget = {
             aboutText: 'ssdsd',
             introMessage: "✋ HOLA! SOY BOTLOGISTICA",
             title:'BotLogistica'
         };
-    </script>
+    </script> --}}
   
-    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+    {{-- <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> --}}
       
 </head>
 <body class="layout-boxed">
@@ -110,6 +101,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 
     @yield('scripts')
+    {{-- <script defer src="https://pyscript.net/latest/pyscript.js"></script> --}}
 
     {{-- <script src="/assets/js/dashboard/dash_1.js"></script> --}}
  <script src="{{asset('src/plugins/src/table/datatable/datatables.js')}}"></script>
@@ -178,9 +170,5 @@
          "pageLength": 5 
      });
  </script>
-
-     
- <!-- END PAGE LEVEL SCRIPTS -->
-
 </body>
 </html>

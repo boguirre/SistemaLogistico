@@ -183,6 +183,41 @@
                     </div>
                 </a>
             </li>
+            <li class="menu">
+                <a href="#indicadores" data-bs-toggle="collapse" aria-expanded="{{ ( Request::is('indicators')||Request::is('indicators/tiempo')||Request::is('indicators/completo')||Request::is('orders/untimely')||Request::is('orders/report') ? 'true' : '') }}" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                        <span>Indicadores</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled {{ (Request::is('indicators') ||Request::is('indicators/tiempo')||Request::is('indicators/completo') ? 'show' : '') }}" id="indicadores" data-bs-parent="#accordionExample">
+                    <li class="{{ (Request::is('indicators/tiempo') ? 'active' : '') }}">
+                        <a href="{{route('indicators.tiempo')}}"> Reporte Pd. A Tiempo </a>
+                    </li>
+
+                    <li class="{{ (Request::is('indicators/completo') ? 'active' : '') }}">
+                        <a href="{{route('indicators.completo')}}"> Reporte Pd. Completos.</a>
+                    </li>
+                    <li class="">
+                        <a href="#"> Reporte. Obsolescencia </a>
+                    </li>      
+                </ul>
+            </li>
+
+            
+            <li class="menu {{ (Request::is('predicted') ? 'active' : '') }}">
+                <a href="{{route('predicted.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-aperture"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>                     
+
+
+                        <span>Predicciones</span>
+                    </div>
+                </a>
+            </li>
         </ul>
         
     </nav>
