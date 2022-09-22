@@ -20,10 +20,14 @@
 
     #datos {
         float: left;
-        margin-top: 0%;
+        margin-top: 2%;
         margin-left: 2%;
         margin-right: 2%;
-        /*text-align: justify;*/
+        text-align: left;
+    }
+
+    #proveedor {
+        text-align: left;
     }
 
     #encabezado {
@@ -39,7 +43,11 @@
         margin-top: 2%;
         margin-left: 2%;
         margin-right: 2%;
-        font-size: 20px;
+        margin-bottom: 2%
+        font-size: 20%;
+        font-weight: bold;
+        padding: 10px;
+        color: #FFFFFF;
         background: #D2691E;
     }
 
@@ -100,6 +108,11 @@
         border-bottom: 1px solid #FFFFFF;
     }
 
+    #facproducto tbody {
+        padding: 20px;
+        text-align: center;
+    }
+
 </style>
 
 <body>
@@ -111,16 +124,23 @@
             <table id="datos">
                 <thead>
                     <tr>
-                        <th id="">DATOS DEL VENDEDOR</th>
+                        <th id="proveedor">DATOS DEL PEDIDO</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>
                             <p id="proveedor">
-                                Nombre: {{$order->user->name}}<br>
-                                
-                                Email: {{$order->user->email}}
+                                USUARIO: {{$order->user->name}}<br>
+                            </p>
+                            <p id="proveedor">
+                                EMAIL: {{$order->user->email}}<br>
+                            </p>
+                            <p id="proveedor">
+                                CLIENTE INTERNO: {{$order->employees->name}}<br>
+                            </p>
+                            <p id="proveedor">
+                                AREA: {{$order->employees->areas->name}}
                             </p>
                         </th>
                     </tr>
@@ -134,9 +154,9 @@
                 {{$order->user->id}}
             </p>  --}}
             <p>
-                NUMERO DE VENTA
-                <br>
-                {{$order->id}}
+                NUMERO DE PEDIDO: {{$order->id}}
+                {{-- <br> --}}
+                
             </p>
         </div>
     </header>
@@ -149,9 +169,7 @@
                     <tr id="fa">
                         <th>CANTIDAD</th>
                         <th>PRODUCTO</th>
-                        <th>PRECIO VENTA(PEN)</th>
-                        <th>DESCUENTO(%)</th>
-                        <th>SUBTOTAL(PEN)</th>
+                        <th>UNIDAD DE MEDIDA</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -159,39 +177,18 @@
                     <tr>
                         <td>{{$orderDetail->quantity}}</td>
                         <td>{{$orderDetail->product->name}}</td>
-                        <td>s/ {{$orderDetail->price}}</td>
-                        <td>{{$orderDetail->discount}}</td>
-                        <td>s/ {{number_format($orderDetail->quantity*$orderDetail->price)}}
-                        </td>
+                        <td>{{$orderDetail->product->measures->name}}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
-                    
-                    <tr>
-                        <th colspan="4">
-                            <p align="right">SUBTOTAL:</p>
-                        </th>
-                        <td>
-                            <p align="right">s/ {{number_format($subtotal,2)}}</p>
-                        </td>
-                    </tr>
-                   
-                    <tr>
-                        <th colspan="4">
-                            <p align="right">TOTAL IMPUESTO ({{$order->tax}}%):</p>
-                        </th>
-                        <td>
-                            <p align="right">s/ {{number_format($subtotal*18/100,2)}}</p>
-                        </td>
-                    </tr>
 
                     <tr>
                         <th colspan="4">
-                            <p align="right">TOTAL PAGAR:</p>
+                            <p align="right">TOTAL DE PRODUCTOS:</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($order->total,2)}}</p>
+                            <p align="right">{{number_format($order->total,2)}}</p>
                         </td>
                     </tr>
 

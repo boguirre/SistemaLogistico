@@ -42,10 +42,12 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $now = Carbon::now('America/Lima');    
+
         $request->validate([
             'employee_id' => 'required',
             'product_id' => 'required',
-            'date_order_delivery'=>'required|date'          
+            'date_order_delivery'=>'required|after_or_equal:'. $now     
         ]);
 
         $order = Order::create($request->all()+[
@@ -53,7 +55,7 @@ class OrderController extends Controller
             'date_order'=>Carbon::now('America/Lima'),
         ]);
         foreach ($request->product_id as $key => $product) {
-            $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key], "price"=>$request->price[$key]);
+            $results[] = array("product_id"=>$request->product_id[$key], "quantity"=>$request->quantity[$key]);
         }
         $order->orderDetails()->createMany($results);
         return redirect()->route('orders.index');

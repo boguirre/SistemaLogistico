@@ -17,7 +17,7 @@
 
 <div class="col-md-6">
     <label for="date_order_delivery">Fecha Entrega:</label>
-    {!! Form::date('date_order_delivery', null, ['class' => 'form-control ', 'style'=>'color:black; background:white'. ($errors->has('date_order_delivery') ? ' border-red-600' : '')]) !!}
+    {!! Form::datetimelocal('date_order_delivery', null, ['class' => 'form-control ', 'style'=>'color:black; background:white'. ($errors->has('date_order_delivery') ? ' border-red-600' : '')]) !!}
 
 </div>
 
@@ -48,43 +48,14 @@
             <input type="text" name="" id="stock" value="" class="form-control" disabled>
     </div>
     <div class="col-md-4">
-            <label for="price">Precio de venta</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
+        <label for="quantity">Cantidad</label>
+        <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
     </div>
   </div>
 
 
 
 <br>
-  <div class="row">
-    <div class="col-md-6">
-            <label for="quantity">Cantidad</label>
-            <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
-    </div>
-    <div class=" col-md-3">
-        <label for="tax">Impuesto</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon3">%</span>
-            </div>
-            <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3" value="18">
-        </div>
-    </div>
-    <div class="col-md-3">
-        <label for="discount">Porcentaje de descuento</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon2">%</span>
-            </div>
-            <input type="number" class="form-control" name="discount" id="discount" aria-describedby="basic-addon2" value="0">
-        </div>
-    </div>
-  </div>
-
-
-
-
-
 
 <br>
 <div class="form-group">
@@ -99,36 +70,16 @@
                 <tr>
                     <th>Eliminar</th>
                     <th>Producto</th>
-                    <th>Precio Venta (PEN)</th>
-                    <th>Descuento</th>
                     <th>Cantidad</th>
-                    <th>SubTotal (PEN)</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th colspan="5">
-                        <p align="right">TOTAL:</p>
+                        <p align="right">TOTAL DE PRODUCTOS:</p>
                     </th>
                     <th>
-                        <p align="right"><span id="total">PEN 0.00</span> </p>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="5">
-                        <p align="right">TOTAL IMPUESTO (18%):</p>
-                    </th>
-                    <th>
-                        <p align="right"><span id="total_impuesto">PEN 0.00</span></p>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="5">
-                        <p align="right">TOTAL PAGAR:</p>
-                    </th>
-                    <th>
-                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden"
-                                name="total" id="total_pagar"></p>
+                        <p align="right"><span id="total_html">0.00</span> <input type="hidden" name="total" id="total_value"></p>
                     </th>
                 </tr>
             </tfoot>

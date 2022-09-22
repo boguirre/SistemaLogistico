@@ -69,31 +69,11 @@
                                 <thead>
                                     <tr>
                                         <th>Producto</th>
-                                        <th>Precio Venta (PEN)</th>
-                                        <th>Descuento(PEN)</th>
                                         <th>Cantidad</th>
-                                        <th>SubTotal(PEN)</th>
+                                        <th>Unidad de Medida</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
-
-                                    <tr>
-                                        <th colspan="4">
-                                            <p align="right">SUBTOTAL:</p>
-                                        </th>
-                                        <th>
-                                            <p align="right">s/{{number_format($subtotal,2)}}</p>
-                                        </th>
-                                    </tr>
-
-                                    <tr>
-                                        <th colspan="4">
-                                            <p align="right">TOTAL IMPUESTO ({{$order->tax}}%):</p>
-                                        </th>
-                                        <th>
-                                            <p align="right">s/{{number_format($subtotal*18/100,2)}}</p>
-                                        </th>
-                                    </tr>
                                     <tr>
                                         <th colspan="4">
                                             <p align="right">TOTAL:</p>
@@ -108,11 +88,8 @@
                                     @foreach($orderDetails as $orderDetail)
                                     <tr>
                                         <td>{{$orderDetail->product->name}}</td>
-                                        <td>s/ {{$orderDetail->price}}</td>
-                                        <td>{{$orderDetail->discount}} %</td>
                                         <td>{{$orderDetail->quantity}}</td>
-                                        <td>s/{{number_format($orderDetail->quantity*$orderDetail->price,2)}}
-                                        </td>
+                                        <td>{{$orderDetail->product->measures->name}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
