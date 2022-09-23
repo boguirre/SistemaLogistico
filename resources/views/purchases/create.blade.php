@@ -23,7 +23,7 @@
                 <div class="card-body">
                     
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de compra</h4>
+                        <h4 class="card-title">Registro de Entrada</h4>
                     </div>
                     
                     @include('purchases._form')

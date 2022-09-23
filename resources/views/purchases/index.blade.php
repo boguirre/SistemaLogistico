@@ -6,13 +6,13 @@
     <!-- BREADCRUMB -->
     <div class="page-meta">
         {{-- <div class="col text-right"> --}}
-            <a href="{{url('/purchases/create')}}" class="btn btn-xm btn-primary" style="float: right;">Crear Compra</a>
+            <a href="{{url('/purchases/create')}}" class="btn btn-xm btn-primary" style="float: right;">Registrar Entrada</a>
             {{--
         </div> --}}
         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Tabla</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Compras</li>
+                <li class="breadcrumb-item active" aria-current="page">Entradas</li>
             </ol>
         </nav>
 
