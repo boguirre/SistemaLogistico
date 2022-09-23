@@ -2,11 +2,10 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <th>TOTAL DE PEDIDOS COMPLETOS</th>
-            <th>TOTAL DE PEDIDOS INCOMPLETOS</th>
-            <th>TOTAL DE PEDIDOS</th>
+            <th>TotalPedidosCompletos</th>
+            <th>TotalPedidosIncompletos</th>
+            <th>TotalPedidos</th>
             <th>%</th>
-
         </tr>
     </thead>
     <tbody>
@@ -17,8 +16,6 @@
             <td>{{$completos->INCOMPLETO}}</td>
             <td>{{$completos->TOTALPEDIDOS}}</td>
             <td>{{$completos->COMPLETO / $completos->TOTALPEDIDOS}}</td>
-
-
         </tr>
         @endforeach
     </tbody>
