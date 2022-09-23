@@ -52,6 +52,7 @@
                             <label class="form-control-label"><strong>Cliente</strong></label>
                             <p><a href="{{route('employees.show', $order->employees->id)}}">{{$order->employees->name}}</a></p>
                         </div>
+                        
                         <div class="col-md-4 text-center">
                             <label class="form-control-label"><strong>Usuario</strong></label>
                             <p>{{$order->user->name}}</p>
@@ -60,6 +61,7 @@
                             <label class="form-control-label"><strong>Número Pedido</strong></label>
                             <p>{{$order->id}}</p>
                         </div>
+                        
                     </div>
                     <br /><br />
                     <div class="form-group">
@@ -79,7 +81,7 @@
                                             <p align="right">TOTAL:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($order->total,2)}}</p>
+                                            <p align="right">{{number_format($order->total,2)}}</p>
                                         </th>
                                     </tr>
 
