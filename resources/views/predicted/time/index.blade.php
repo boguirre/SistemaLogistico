@@ -79,53 +79,30 @@ import asyncio
 import panel as pn
 from panel.io.pyodide import show
 import numpy as np
-from sklearn.neural_network import MLPRegressor
-
+from sklearn.linear_model import LinearRegression
 
 fileInput = pn.widgets.FileInput(accept=".csv")
 uploadButton = pn.widgets.Button(name="Show Prediction", button_type = 'primary')
-to_predict = pn.widgets.Spinner(name="Total Installs", value=0, step=1, start=1)
-
+to_predict = pn.widgets.Spinner(name="Total", value=0, step=1, start=1)
 
 def process_file(event):
     if fileInput.value is not None:
-        data = pd.read_csv(io.BytesIO(fileInput.value),sep=';')
+        data = pd.read_csv(io.BytesIO(fileInput.value))
+        y = data[['Tiempo']]  #change column name
+        X = data[['Carga']]  #change column name
+        
+        # regression part
+        X = X 
+        y = y 
+        reg = LinearRegression().fit(X, y)
+        reg.score(X, y)
 
-        x = data['Tiempo']  #change column name
-        y = data['Carga']  #change column name
+        print(reg.coef_)
 
-        X=x[:,np.newaxis]
-        i=0
-        plt.figure(figsize=(20,10))
-        plt.rc('font',size=16)
-        colors=['teal','pink','brown','hotpink','orchid','aqua','green','blue','yellow','purple','black','tomato','salmon','olive','chocolate','wheat']
+        predicted = reg.predict(np.array(to_predict.value).reshape(1, -1))
 
-        while True:
-              i=i+1
-              from sklearn.model_selection import train_test_split
-              X_train, X_test, y_train, y_test = train_test_split(X,y)
-              mlr=MLPRegressor(solver = 'lbfgs',alpha=1e-5,hidden_layer_sizes=(3,3),random_state=1)
-              mlr.fit(X_train,y_train)
-              print(mlr.score(X_train,y_train))
-              plt.scatter(X_train,y_train,color='orange', label="Training set" if i==1 else "")
-              plt.scatter(X_test,y_test,color='red', label="test set" if i==1 else "")
-              plt.scatter(X,mlr.predict(X),color=colors[i], label="ITERACIÓN" +str(i))
-              if mlr.score(X_train,y_train) > 0.95:
-                  break     
-        predicted = mlr.predict(np.array([[to_predict.value]]))
-        plt.xlabel('tiempo')
-        plt.ylabel('carga')
-        plt.legend(loc='lower right')
-        plt.show()
         reg_op = Element('regression-op')
         reg_op.write(predicted)
-        
-
-         
-
-
-        
-
 
 await show(fileInput, 'fileinput')
 await show(uploadButton, 'upload')

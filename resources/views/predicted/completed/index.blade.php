@@ -85,7 +85,7 @@ from sklearn.linear_model import LinearRegression
 
 fileInput = pn.widgets.FileInput(accept=".csv")
 uploadButton = pn.widgets.Button(name="Show Prediction", button_type = 'primary')
-to_predict = pn.widgets.Spinner(name="Total Installs", value=0, step=1, start=1)
+to_predict = pn.widgets.Spinner(name="Total", value=0, step=1, start=1)
 
 def process_file(event):
     if fileInput.value is not None:
