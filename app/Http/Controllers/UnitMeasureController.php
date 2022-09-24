@@ -38,7 +38,7 @@ class UnitMeasureController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:50|regex:/^[\pL\s\-]+$/u',
             
         ]);
         $measure = UnitMeasure::create($request->all());
@@ -80,7 +80,7 @@ class UnitMeasureController extends Controller
     public function update(Request $request, UnitMeasure $measure)
     {
         $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:50|regex:/^[\pL\s\-]+$/u',
             
         ]);
         $measure->update($request->all());

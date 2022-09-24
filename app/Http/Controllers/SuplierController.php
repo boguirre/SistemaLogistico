@@ -40,9 +40,9 @@ class SuplierController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email',
-            'ruc_number' => 'required|max:50',
+            'ruc_number' => 'required|numeric',
             'address' => 'required|max:50',
-            'phone' => 'required|max:50',
+            'phone' => 'required|numeric',
 
             
         ]);
@@ -88,9 +88,9 @@ class SuplierController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email',
-            'ruc_number' => 'required|max:50',
+            'ruc_number' => 'required|numeric',
             'address' => 'required|max:50',
-            'phone' => 'required|max:50',
+            'phone' => 'required|numeric',
 
             
         ]);
