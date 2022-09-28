@@ -5,7 +5,7 @@
 <div class="container">
        <div class="row">
 
-    <h4 class="mt-5">Crear Producto</h4>
+    <h4 class="mt-5">Registrar Producto</h4>
     {!! Form::open(['route' => 'products.store', 'autocomplete' => 'off', 'files' => true, 'class'=>'formulario row g-3']) !!}
 
     <div class="col-md-12">
@@ -51,15 +51,15 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
         </div>
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <label for="stockmin" class="form-label">Stock Minimo:</label>
             <input type="number" class="form-control" id="stockmin" name="stockmin"  min="0" value="{{old('stockmin')}}">
             @error('stockmin')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
-        </div>
+        </div> --}}
         <div class="col-md-6">
-            <label for="price" class="form-label">Precio</label>
+            <label for="price" class="form-label">Lote</label>
             <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{old('price')}}">
             @error('price')
                 <strong class="text-sm text-red-600">{{$message}}</strong>

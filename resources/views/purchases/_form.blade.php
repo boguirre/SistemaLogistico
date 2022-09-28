@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class=" col-md-6">
+    <div class=" col-md-">
         {{-- <div class="form-group"> --}}
             <label for="suplier_id">Proveedor</label>
             <select class="form-control" name="suplier_id" id="suplier_id" style="color: white">
@@ -13,7 +13,7 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror
     </div>
-    <div class="col-md-6">
+    {{-- <div class="col-md-6">
         <label for="tax">Impuesto</label>
         <div class="input-group">
 
@@ -23,7 +23,7 @@
             <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3"
                 placeholder="18"  value="18">
         </div>
-    </div>
+    </div> --}}
 </div>
 
 {{-- <div class="form-group">
@@ -32,7 +32,7 @@
 </div> --}}
 <br>
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
         {{-- <div class="form-group"> --}}
             <label for="product_id">Producto</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
@@ -47,18 +47,18 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror
     </div>
-    <div class="col-md-3">
+    <div class="col-md-6">
         {{-- <div class="form-group"> --}}
             <label for="quantity">Cantidad</label>
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         {{-- </div> --}}
     </div>
-    <div class="col-md-4">
-        {{-- <div class="form-group"> --}}
+    {{-- <div class="col-md-4">
+        
             <label for="price">Precio de compra</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
-        {{-- </div> --}}
-    </div>
+        
+    </div> --}}
 </div>
 <br>
 <div class="form-group">
@@ -68,7 +68,7 @@
 
 <br>
 <div class="form-group">
-    <h4 class="card-title">Detalles de compra</h4>
+    <h4 class="card-title">Detalles de la Entrada</h4>
     <div class="table-responsive col-md-12">
         <table id="detalles" class="table table-striped">
             <thead>
