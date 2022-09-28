@@ -2,10 +2,9 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <th>TOTAL DE PEDIDOS A TIEMPO</th>
-            <th>TOTAL DE PEDIDOS A DESTIEMPO</th>
-            <th>TOTAL DE PEDIDOS</th>
-            <th>%</th>
+            <th>PEDIDOS ENTREGADOS A TIEMPO</th>
+            <th>NUMERO TOTAL DE PEDIDOS</th>
+            <th>PET</th>
 
         </tr>
     </thead>
@@ -14,7 +13,6 @@
         <tr>
             <td>{{$tiempos->TIEMPO}}</td>
             <td>{{$tiempos->TEMPRANO}}</td>
-            <td>{{$tiempos->DESTIEMPO}}</td>
             <td>{{$tiempos->TOTALPEDIDOS}}</td>
             <td>{{$tiempos->TEMPRANO / $tiempos->TOTALPEDIDOS}}</td>
 

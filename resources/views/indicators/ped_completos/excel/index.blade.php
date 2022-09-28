@@ -2,10 +2,9 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <th>TotalPedidosCompletos</th>
-            <th>TotalPedidosIncompletos</th>
+            <th>PedidosCorrectamentePreparados</th>
             <th>TotalPedidos</th>
-            <th>%</th>
+            <th>PPP</th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +12,6 @@
         <tr>
             <td>{{$completos->TIEMPO}}</td>
             <td>{{$completos->COMPLETO}}</td>
-            <td>{{$completos->INCOMPLETO}}</td>
             <td>{{$completos->TOTALPEDIDOS}}</td>
             <td>{{$completos->COMPLETO / $completos->TOTALPEDIDOS}}</td>
         </tr>
