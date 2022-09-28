@@ -69,10 +69,10 @@
         price = $("#price").val();
         impuesto = $("#tax").val();
     
-        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0) {
+        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0 && price != "") {
             subtotal[cont] = parseInt(quantity);
             total = total + subtotal[cont];
-            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa-solid fa-circle-radiation"> X </i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td><td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td></tr>';
+            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa-solid fa-circle-radiation"> X </i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td><td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td><td> <input type="hidden" name="price[]" value="' + price + '"> <input type="text" value="' + price + '" class="form-control" disabled> </td></tr>';
             cont++;
             limpiar();
             totales();

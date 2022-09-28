@@ -56,7 +56,7 @@
     <div class="col-md-4">
         
             <label for="price">Lote</label>
-            <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
+            <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId">
         
     </div>
 </div>
@@ -76,6 +76,7 @@
                     <th>Eliminar</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
+                    <th>Lote</th>
                 </tr>
             </thead>
             <tfoot>

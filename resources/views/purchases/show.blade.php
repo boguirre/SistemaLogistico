@@ -27,50 +27,33 @@
                             <p>{{$purchase->supliers->name}}</p>
                         </div>
                         <div class="col-md-4 text-center">
-                            <label class="form-control-label" for="num_compra"><strong>Número Compra</strong></label>
+                            <label class="form-control-label" for="num_compra"><strong>Número Entrada</strong></label>
                             <p>{{$purchase->id}}</p>
                         </div>
                         <div class="col-md-4 text-center">
-                            <label class="form-control-label" for="num_compra"><strong>Comprador</strong></label>
+                            <label class="form-control-label" for="num_compra"><strong>Usuario</strong></label>
                             <p>{{$purchase->users->name}}</p>
                         </div>
                     </div>
                     <br /><br />
                     <div class="form-group row ">
-                        <h4 class="card-title ml-3">Detalles de compra</h4>
+                        <h4 class="card-title ml-3">Detalles de la Entrada</h4>
                         <div class="table-responsive col-md-12">
                             <table id="detalles" class="table">
                                 <thead>
                                     <tr>
                                         <th>Producto</th>
-                                        <th>Precio (PEN)</th>
                                         <th>Cantidad</th>
-                                        <th>SubTotal (PEN)</th>
+                                        <th>Lote</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th colspan="3">
-                                            <p align="right">SUBTOTAL:</p>
+                                            <p align="right">TOTAL DE PRODUCTOS ENTRANTES:</p>
                                         </th>
                                         <th>
-                                            <p align="right">s/{{number_format($subtotal,2)}}</p>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3">
-                                            <p align="right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p>
-                                        </th>
-                                        <th>
-                                            <p align="right">s/{{number_format($subtotal*$purchase->tax/100,2)}}</p>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="3">
-                                            <p align="right">TOTAL:</p>
-                                        </th>
-                                        <th>
-                                            <p align="right">s/{{number_format($purchase->total,2)}}</p>
+                                            <p align="right">{{number_format($purchase->total,2)}}</p>
                                         </th>
                                     </tr>
                     
@@ -79,9 +62,8 @@
                                     @foreach($purchaseDetails as $purchaseDetail)
                                     <tr>
                                         <td>{{$purchaseDetail->products->name }}</td>
-                                        <td>s/{{$purchaseDetail->price}}</td>
                                         <td>{{$purchaseDetail->quantity}}</td>
-                                        <td>s/{{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td>
+                                        <td>{{$purchaseDetail->price}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
