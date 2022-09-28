@@ -5,7 +5,7 @@
 
 
     <br>
-    <h4 class="text-center">INDICADOR TOTAL DE PEDIDOS A TIEMPO</h4>
+    <h4 class="text-center">INDICADOR DE PEDIDOS ENTREGADOS A TIEMPO</h4>
     <!-- /BREADCRUMB -->
   
 
@@ -27,10 +27,10 @@
                     <thead>
                         <tr>
                             <th class="text-center dt-no-sorting">Fecha</th>
-                            <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS A TIEMPO</th>
-                            <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS A DESTIEMPO</th>
-                            <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS</th>
-                            <th class="text-center dt-no-sorting">%</th>
+                            <th class="text-center dt-no-sorting">PEDIDOS ENTREGADOS A TIEMPO</th>
+                            {{-- <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS A DESTIEMPO</th> --}}
+                            <th class="text-center dt-no-sorting">NUMERO TOTAL DE PEDIDOS</th>
+                            <th class="text-center dt-no-sorting">PET</th>
 
                         </tr>
                     </thead>
@@ -41,7 +41,7 @@
 
                             <td>{{$tiempos->TIEMPO}}</td>
                             <td>{{$tiempos->TEMPRANO}}</td>
-                            <td>{{$tiempos->DESTIEMPO}}</td>
+                            {{-- <td>{{$tiempos->DESTIEMPO}}</td> --}}
                             <td>{{$tiempos->TOTALPEDIDOS}}</td>
                             <td>{{$tiempos->TEMPRANO / $tiempos->TOTALPEDIDOS}}</td>
 

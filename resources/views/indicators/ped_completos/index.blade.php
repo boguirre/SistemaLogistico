@@ -6,7 +6,7 @@
                     
                     
 <br>
-                    <h4 class="text-center">INDICADOR TOTAL DE PEDIDOS COMPLETOS</h4>
+                    <h4 class="text-center">INDICADOR PRECISION DE LA PREPARACION DE PEDIDOS</h4>
                     <!-- /BREADCRUMB -->
     
                     <div class="row layout-top-spacing">
@@ -25,10 +25,10 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center dt-no-sorting">Fecha</th>
-                                            <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS COMPLETOS</th>
-                                            <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS INCOMPLETOS</th>
+                                            <th class="text-center dt-no-sorting">PEDIDOS CORRECTAMENTE PREPARADOS</th>
+                                            {{-- <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS INCOMPLETOS</th> --}}
                                             <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS</th>
-                                            <th class="text-center dt-no-sorting">%</th>
+                                            <th class="text-center dt-no-sorting">PPP</th>
                                             
                                         </tr>
                                     </thead>
@@ -39,7 +39,7 @@
                                             
                                             <td>{{$completos->TIEMPO}}</td>
                                             <td>{{$completos->COMPLETO}}</td>
-                                            <td>{{$completos->INCOMPLETO}}</td>
+                                            {{-- <td>{{$completos->INCOMPLETO}}</td> --}}
                                             <td>{{$completos->TOTALPEDIDOS}}</td>
                                             <td>{{$completos->COMPLETO / $completos->TOTALPEDIDOS}}</td>
 
