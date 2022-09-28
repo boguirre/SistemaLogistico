@@ -32,7 +32,7 @@
 </div> --}}
 <br>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         {{-- <div class="form-group"> --}}
             <label for="product_id">Producto</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
@@ -47,18 +47,18 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         {{-- <div class="form-group"> --}}
             <label for="quantity">Cantidad</label>
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         {{-- </div> --}}
     </div>
-    {{-- <div class="col-md-4">
+    <div class="col-md-4">
         
-            <label for="price">Precio de compra</label>
+            <label for="price">Lote</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId">
         
-    </div> --}}
+    </div>
 </div>
 <br>
 <div class="form-group">
@@ -75,35 +75,17 @@
                 <tr>
                     <th>Eliminar</th>
                     <th>Producto</th>
-                    <th>Precio(PEN)</th>
                     <th>Cantidad</th>
-                    <th>SubTotal(PEN)</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th colspan="4">
-                        <p align="right">TOTAL:</p>
+                        <p align="right">TOTAL PRODUCTOS ENTRANTES:</p>
                     </th>
                     <th>
-                        <p align="right"><span id="total">PEN 0.00</span> </p>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="4">
-                        <p align="right">TOTAL IMPUESTO (18%):</p>
-                    </th>
-                    <th>
-                        <p align="right"><span id="total_impuesto">PEN 0.00</span></p>
-                    </th>
-                </tr>
-                <tr>
-                    <th colspan="4">
-                        <p align="right">TOTAL PAGAR:</p>
-                    </th>
-                    <th>
-                        <p align="right"><span align="right" id="total_pagar_html">PEN 0.00</span> <input type="hidden"
-                                name="total" id="total_pagar"></p>
+                        <p align="right"><span align="right" id="total_html">0.00</span> <input type="hidden"
+                                name="total" id="total_value"></p>
                     </th>
                 </tr>
             </tfoot>

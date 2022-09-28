@@ -44,27 +44,27 @@
             @enderror                   
         </div>
         
-        <div class="col-md-6">
+        {{-- <div class="col-md-6">
             <label for="stock" class="form-label">Stock:</label>
             <input type="number" class="form-control" id="stock" name="stock"  min="0" value="{{old('stock')}}">
             @error('stock')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
-        </div>
-        {{-- <div class="col-md-6">
+        </div> --}}
+        <div class="col-md-6">
             <label for="stockmin" class="form-label">Stock Minimo:</label>
             <input type="number" class="form-control" id="stockmin" name="stockmin"  min="0" value="{{old('stockmin')}}">
             @error('stockmin')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
-        </div> --}}
-        <div class="col-md-6">
+        </div>
+        {{-- <div class="col-md-6">
             <label for="price" class="form-label">Lote</label>
             <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{old('price')}}">
             @error('price')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
-        </div>
+        </div> --}}
 
         <div class="col-12">
             <button type="submit" class="btn btn-primary" style="float: right;">Guardar Información</button>

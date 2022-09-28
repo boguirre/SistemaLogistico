@@ -69,10 +69,10 @@
         price = $("#price").val();
         impuesto = $("#tax").val();
     
-        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0 && price != "" && price > 0) {
-            subtotal[cont] = quantity * price;
+        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0) {
+            subtotal[cont] = parseInt(quantity);
             total = total + subtotal[cont];
-            var fila = '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar('+cont+');"><i class="fas fa-bell"></i></button></td> <td><input type="hidden" name="product_id[]" value="'+product_id+'">'+producto+'</td> <td> <input type="hidden" id="price[]" name="price[]" value="' + price + '"> <input class="form-control" type="number" id="price[]" value="' + price + '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input class="form-control" type="number" value="' + quantity + '" disabled> </td> <td align="right">s/' + subtotal[cont] + ' </td></tr>';
+            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa-solid fa-circle-radiation"> X </i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td><td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td></tr>';
             cont++;
             limpiar();
             totales();
@@ -93,7 +93,9 @@
     }
     
     function totales() {
-        $("#total").html("PEN " + total.toFixed(2));
+        $("#total_html").html("" + total.toFixed(2));
+        $("#total_value").val(total.toFixed(2));
+        
         total_impuesto = total * impuesto / 100;
         total_pagar = total + total_impuesto;
         $("#total_impuesto").html("PEN " + total_impuesto.toFixed(2));
@@ -115,7 +117,7 @@
         total_pagar_html = total + total_impuesto;
         $("#total").html("PEN" + total);
         $("#total_impuesto").html("PEN" + total_impuesto);
-        $("#total_pagar_html").html("PEN" + total_pagar_html);
+        $("#total_pagar_html").html(total_pagar_html);
         $("#total_pagar").val(total_pagar_html.toFixed(2));
         $("#fila" + index).remove();
         evaluar();
