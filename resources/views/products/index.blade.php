@@ -6,7 +6,7 @@
                     <!-- BREADCRUMB -->
                     <div class="page-meta">
                         {{-- <div class="col text-right"> --}}
-                        <a href="{{url('/products/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Producto</a>
+                        <a href="{{url('/products/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Registrar Producto</a>
                           {{-- </div> --}}
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">

@@ -44,6 +44,7 @@
                                     <tr>
                                         <th>Producto</th>
                                         <th>Cantidad</th>
+                                        <th>Unidad de Medida</th>
                                         <th>Lote</th>
                                     </tr>
                                 </thead>
@@ -63,6 +64,7 @@
                                     <tr>
                                         <td>{{$purchaseDetail->products->name }}</td>
                                         <td>{{$purchaseDetail->quantity}}</td>
+                                        <td>{{$purchaseDetail->products->measures->name }}</td>
                                         <td>{{$purchaseDetail->price}}</td>
                                     </tr>
                                     @endforeach

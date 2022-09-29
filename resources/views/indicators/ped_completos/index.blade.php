@@ -6,7 +6,7 @@
                     
                     
 <br>
-                    <h4 class="text-center">INDICADOR PRECISION DE LA PREPARACION DE PEDIDOS</h4>
+                    <h4 class="text-center">INDICADOR PRECISION DE LA PREPARACION DE PEDIDOS (PPP)</h4>
                     <!-- /BREADCRUMB -->
     
                     <div class="row layout-top-spacing">

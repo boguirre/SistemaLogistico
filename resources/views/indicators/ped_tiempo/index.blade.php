@@ -5,7 +5,7 @@
 
 
     <br>
-    <h4 class="text-center">INDICADOR DE PEDIDOS ENTREGADOS A TIEMPO</h4>
+    <h4 class="text-center">INDICADOR DE PEDIDOS ENTREGADOS A TIEMPO (PET)</h4>
     <!-- /BREADCRUMB -->
   
 
