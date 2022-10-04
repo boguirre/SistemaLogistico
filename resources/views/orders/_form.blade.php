@@ -30,7 +30,14 @@
 
 <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <label for="name" class="form-label">Tipo Producto:</label>
+        {!! Form::select('category_id', $category, null, ['class' => 'form-control  block w-full','style'=>'background:#1b2e4b;width: 100%','id'=>'country', 'placeholder'=>'Seleccione  una Categoria .....']) !!}
+        @error('category_id')
+            <strong class="text-sm text-red-600"  style="color: red">{{$message}}</strong>
+        @enderror                    
+    </div>
+    <div class="col-md-3">
             <label for="product_id">Producto</label>
             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
             <select class="form-control" name="product_id" id="product_id">
@@ -43,11 +50,11 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
             <label for="">Stock actual</label>
             <input type="text" name="" id="stock" value="" class="form-control" disabled>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label for="quantity">Cantidad</label>
         <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
     </div>

@@ -90,7 +90,49 @@
 
 
 @endsection
+
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{-- <link rel="stylesheet" href="{{asset('/path/to/select2.css')}}"> --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
+@endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 @section('scripts')
+
+<script>
+    $(document).ready(function () {
+        $('#country').on('change', function () {
+            var countryId = this.value;
+            $('#product_id').html('');
+            $.ajax({
+                url: '{{ route('getStatesOrders') }}?category_id='+countryId,
+                type: 'get',
+                success: function (res) {
+                    $('#product_id').html('<option value="" selected　@if(old('product_id')=='3')selected  @endif>Seleccione un Producto .....</option>');
+                    $.each(res, function (key, value) {
+                        $('#product_id').append('<option value="' + value
+                            .id + '_'+ value.stock +'"       >' + value.name + '</option>');
+                    });
+                    // $('#city').html('<option value="">Select City</option>');
+                }
+            });
+        });
+     
+    });
+</script>
+
+
+<script>
+    $('#country').select2({theme: "bootstrap4"  });
+  </script>
+
+<script>
+    $('#product_id').select2({theme: "bootstrap4"  });
+  </script>
 
 <script>
     
