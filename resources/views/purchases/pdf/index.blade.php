@@ -131,7 +131,7 @@
         <div id="fact">
             {{--  <p>{{$purchase->provider->document_type}} COMPRA<br />
                 {{$purchase->provider->document_number}}</p>  --}}
-                <p>NUMERO DE COMPRA<br />
+                <p>NUMERO DE ENTRADA<br />
                     {{$purchase->id}}</p>
         </div>
     </header>
@@ -144,8 +144,8 @@
             <table id="faccomprador">
                 <thead>
                     <tr id="fv">
-                        <th>COMPRADOR</th>
-                        <th>FECHA COMPRA</th>
+                        <th>USUARIO</th>
+                        <th>FECHA REGISTRO</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -165,8 +165,10 @@
                     <tr id="fa">
                         <th>CANTIDAD</th>
                         <th>PRODUCTO</th>
-                        <th>PRECIO COMPRA (PEN)</th>
-                        <th>SUBTOTAL (PEN)</th>
+                        <th>UNIDAD DE MEDIDA</th>
+
+                        {{-- <th>CANTIDAD DE PRODUCTOS</th> --}}
+                        {{-- <th>SUBTOTAL (PEN)</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -174,14 +176,14 @@
                     <tr>
                         <td>{{$purchaseDetail->quantity}}</td>
                         <td>{{$purchaseDetail->products->name}}</td>
-                        <td>s/ {{$purchaseDetail->price}}</td>
-                        <td>s/ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td>
+                        <td>{{$purchaseDetail->products->measures->name}}</td>
+                        {{-- <td>{{number_format($purchaseDetail->quantity*$purchaseDetail->price,2)}}</td> --}}
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                  
-                    <tr>
+                    {{-- <tr>
                         <th colspan="3">
                             <p align="right">SUBTOTAL:</p>
                         </th>
@@ -197,13 +199,13 @@
                         <td>
                             <p align="right">s/ {{number_format($subtotal*$purchase->tax/100,2)}}</p>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th colspan="3">
-                            <p align="right">TOTAL PAGAR:</p>
+                            <p align="right">TOTAL DE PRODUCTOS:</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($purchase->total,2)}}<p>
+                            <p align="right">{{number_format($purchase->total)}}<p>
                         </td>
                     </tr>
                   

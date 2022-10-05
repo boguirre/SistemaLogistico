@@ -39,7 +39,7 @@
             <select class="form-control" name="product_id" id="product_id" style="color: white">
                 <option value="" disabled selected>Selecccione un producto</option>
                 @foreach ($products as $product)
-                <option value="{{$product->id}}">{{$product->name}}</option>
+                <option value="{{$product->id}}_{{$product->measures->name}}">{{$product->name}}</option>
                 @endforeach
             </select>
         {{-- </div> --}}
@@ -47,13 +47,18 @@
                 <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror
     </div>
-    <div class="col-md-4">
+  
+    <div class="col-md-3">
+        <label for="">Unidad De Medida</label>
+        <input type="text" name="" id="unidad" value="" class="form-control" disabled>
+    </div>
+    <div class="col-md-2">
         {{-- <div class="form-group"> --}}
             <label for="quantity">Cantidad</label>
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         {{-- </div> --}}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         
             <label for="price">Lote</label>
             <input type="text" class="form-control" name="price" id="price" aria-describedby="helpId">

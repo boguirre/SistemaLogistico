@@ -61,15 +61,28 @@
     
     $("#guardar").hide();
     
+
+    function mostrarValores() {
+    datosProducto = document.getElementById('product_id').value.split('_');
+    $("#unidad").val(datosProducto[1]);
+    };
+
+     $("#product_id").on('change',mostrarValores);
+
+
+
+
+
+
     function agregar() {
-    
-        product_id = $("#product_id").val();
+        datosProducto = document.getElementById('product_id').value.split('_');
+        product_id = datosProducto[0];
         producto = $("#product_id option:selected").text();
         quantity = $("#quantity").val();
         price = $("#price").val();
         impuesto = $("#tax").val();
     
-        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0 && price != "") {
+        if (product_id != "" && product_id > 0 && quantity != "" && quantity > 0 ) {
             subtotal[cont] = parseInt(quantity);
             total = total + subtotal[cont];
             var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa-solid fa-circle-radiation"> X </i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td><td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td><td> <input type="hidden" name="price[]" value="' + price + '"> <input type="text" value="' + price + '" class="form-control" disabled> </td></tr>';

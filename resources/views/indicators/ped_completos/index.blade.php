@@ -19,13 +19,16 @@
                                 </svg> </a>
                                       <br>
                                 </div>
+  <p class="text-center">PPP= Precisión de la preparación de pedidos </p>
+                                <h5 class="text-center">PPP=Número de pedidos correctamente preparados / total de pedidos </h5>
+
                         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
                             <div class="widget-content widget-content-area br-8">
                                 <table id="zero-config" class="table table-striped dt-table-hover" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th class="text-center dt-no-sorting">Fecha</th>
-                                            <th class="text-center dt-no-sorting">PEDIDOS CORRECTAMENTE PREPARADOS</th>
+                                            <th class="text-center dt-no-sorting">N° PEDIDOS CORRECTAMENTE PREPARADOS</th>
                                             {{-- <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS INCOMPLETOS</th> --}}
                                             <th class="text-center dt-no-sorting">TOTAL DE PEDIDOS</th>
                                             <th class="text-center dt-no-sorting">PPP</th>

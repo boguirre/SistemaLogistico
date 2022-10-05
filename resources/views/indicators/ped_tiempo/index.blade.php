@@ -21,6 +21,8 @@
             </div>
 
 <br>
+<h5 class="text-center">PET = Pedidos entregados a Tiempo / Número total de pedidos</h5>
+
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
             <div class="widget-content widget-content-area br-8">
                 <table id="zero-config" class="table table-striped dt-table-hover" style="width:100%">
@@ -58,6 +60,7 @@
                 </table>
             </div>
         </div>
+
 
     </div>
 
