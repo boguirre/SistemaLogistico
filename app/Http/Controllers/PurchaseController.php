@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchase;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Suplier;
 use Carbon\Carbon;
@@ -35,8 +36,19 @@ class PurchaseController extends Controller
     {
         $providers = Suplier::get();
         $products = Product::get();
+        $category= Category::pluck('name','id');
 
-        return view('purchases.create',compact('providers','products'));
+        return view('purchases.create',compact('providers','products','category'));
+    }
+
+    public function getStates(Request $request)
+    {
+        $states = Product::where('category_id', $request->category_id )
+            ->get();
+        
+        if (count($states) > 0) {
+            return response()->json($states);
+        }
     }
 
     /**

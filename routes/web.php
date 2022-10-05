@@ -40,6 +40,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+Route::get('get-states', [PurchaseController::class, 'getStates'])->name('getStates');
+Route::get('get-states', [OrderController::class, 'getStates'])->name('getStatesOrders');
 Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->middleware('can:Modulo Productos')->name('get_products_by_id');
 Route::get('orders/culminated',[OrderController::class,'culminated'])->middleware('can:Modulo Pedidos')->name('orders.culminated');
 Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');

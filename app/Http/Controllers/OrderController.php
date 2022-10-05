@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -31,7 +32,18 @@ class OrderController extends Controller
     {
         $products = Product::get();
         $employees = Employee::get();
-        return view('orders.create',compact('products','employees'));
+        $category= Category::pluck('name','id');
+        return view('orders.create',compact('products','employees','category'));
+    }
+
+    public function getStates(Request $request)
+    {
+        $states = Product::where('category_id', $request->category_id )
+            ->get();
+        
+        if (count($states) > 0) {
+            return response()->json($states);
+        }
     }
 
     /**
