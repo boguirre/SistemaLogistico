@@ -40,14 +40,13 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::get('get-states', [OrderController::class, 'getStates'])->name('getStatesOrders');
 Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->middleware('can:Modulo Productos')->name('get_products_by_id');
 Route::get('orders/culminated',[OrderController::class,'culminated'])->middleware('can:Modulo Pedidos')->name('orders.culminated');
 Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');
 Route::get('orders/untimely',[OrderController::class,'untimely'])->middleware('can:Modulo Pedidos')->name('orders.untimely');
 Route::get('purchases/report',[PurchaseController::class,'reportpurchase'])->name('purchases.report');
 Route::get('/purchases/{purchase}/pdf',[PurchaseController::class, 'pdf'])->name('purchases.pdf');
-Route::get('get-states', [PurchaseController::class, 'getStates'])->name('getStates');
+
 
 Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
 Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');
@@ -75,3 +74,5 @@ Route::get('predicted/completo',[PredictedController::class,'predictedcompleted'
 Route::get('predicted/tiempo',[PredictedController::class,'predictedtime'])->name('predicted.tiempo');
 Route::get('indicators/export/', [IndicatorController::class, 'exportAllPediCompletos'])->name('indicators.export');
 Route::get('indicators/exporttiempo/', [IndicatorController::class, 'exportAllPediTiempo'])->name('indicators.exporttiempo');
+Route::get('get-states', [PurchaseController::class, 'getStates'])->name('getStates');
+Route::get('get-states', [OrderController::class, 'getStates'])->name('getStatesOrders');
