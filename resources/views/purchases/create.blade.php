@@ -67,7 +67,7 @@
                     $('#product_id').html('<option value="" selected　@if(old('product_id')=='3')selected  @endif>Seleccione un Producto .....</option>');
                     $.each(res, function (key, value) {
                         $('#product_id').append('<option value="' + value
-                            .id + '"       >' + value.name + '</option>');
+                            .id + '_'+ value.measures.name +'"       >' + value.name + '</option>');
                     });
                     // $('#city').html('<option value="">Select City</option>');
                 }
