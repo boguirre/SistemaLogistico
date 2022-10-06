@@ -55,13 +55,13 @@
 
 @section('scripts')
 
-<script>
+{{-- <script>
     $(document).ready(function () {
         $('#country').on('change', function () {
             var countryId = this.value;
             $('#product_id').html('');
             $.ajax({
-                url: '{{ route('getStates') }}?category_id='+countryId,
+                url: '{{ route('getStatespur') }}?category_id='+countryId,
                 type: 'get',
                 success: function (res) {
                     $('#product_id').html('<option value="" selected　@if(old('product_id')=='3')selected  @endif>Seleccione un Producto .....</option>');
@@ -75,7 +75,7 @@
         });
      
     });
-</script>
+</script> --}}
 
 <script>
     $('#country').select2({theme: "bootstrap4"  });

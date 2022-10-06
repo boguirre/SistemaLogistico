@@ -74,5 +74,5 @@ Route::get('predicted/completo',[PredictedController::class,'predictedcompleted'
 Route::get('predicted/tiempo',[PredictedController::class,'predictedtime'])->name('predicted.tiempo');
 Route::get('indicators/export/', [IndicatorController::class, 'exportAllPediCompletos'])->name('indicators.export');
 Route::get('indicators/exporttiempo/', [IndicatorController::class, 'exportAllPediTiempo'])->name('indicators.exporttiempo');
-Route::get('get-states', [PurchaseController::class, 'getStates'])->name('getStates');
+// Route::get('get-states', [PurchaseController::class, 'getStates'])->name('getStates');
 Route::get('get-states', [OrderController::class, 'getStates'])->name('getStatesOrders');
