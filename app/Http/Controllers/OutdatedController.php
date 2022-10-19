@@ -72,9 +72,11 @@ class OutdatedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Outdated $outdated)
     {
-        //
+        $products = Product::pluck('name','id');
+
+        return view('outdateds.edit',compact('outdated','products'));
     }
 
     /**
@@ -86,7 +88,7 @@ class OutdatedController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
