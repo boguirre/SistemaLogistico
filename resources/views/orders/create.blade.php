@@ -128,7 +128,7 @@
 
 <script>
     $('#country').select2({theme: "bootstrap4"  });
-  </script>
+</script>
 
 <script>
     $('#product_id').select2({theme: "bootstrap4"  });

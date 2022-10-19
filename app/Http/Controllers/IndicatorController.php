@@ -6,6 +6,8 @@ use App\Exports\PedidosCompletosExport;
 use App\Exports\PedidosTiempoExport;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Outdated;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -14,7 +16,8 @@ class IndicatorController extends Controller
 {
     public function index()
     {
-        return view('indicators.obsolecencia.index');
+        $outdateds= DB::select('call spobsoleto');
+        return view('indicators.obsolecencia.index',compact('outdateds'));
     }
     
     public function pedidosTiempo(){
@@ -28,6 +31,8 @@ class IndicatorController extends Controller
 
         return view('indicators.ped_completos.index',compact('completo'));
     }
+
+    
 
     public function exportAllPediCompletos(){
         return Excel::download(new PedidosCompletosExport, 'pedidostiempo.csv',\Maatwebsite\Excel\Excel::CSV, [

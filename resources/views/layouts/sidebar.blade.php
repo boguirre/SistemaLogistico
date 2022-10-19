@@ -51,7 +51,6 @@
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>Articulos</span></div>
             </li>
-            {{-- <li class="{{ (Request::is('products/*') || Request::is('products') || Request::is('product/*') ? 'active' : '') }}"><a href="{{url('products')}}"><i class="fa fa-code-fork"></i>&nbsp; Products</a></li> --}}
 
             <li class="menu ">
                 <a href="#invoice" data-bs-toggle="collapse" aria-expanded="{{ (Request::is('products') || Request::is('categories')||Request::is('measures')||Request::is('supliers') ? 'true' : '') }}" class="dropdown-toggle">
@@ -141,6 +140,16 @@
                     </li> --}}
                 </ul>
             </li>
+            <li class="menu {{ (Request::is('outdateds')||Request::is('outdateds/create') ? 'active' : '') }}">
+                <a href="{{route('outdateds.index')}}" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg> --}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+
+                        <span>Obsolescencia</span>
+                    </div>
+                </a>
+            </li>
             <li class="menu {{ (Request::is('employees') ? 'active' : '') }}">
                 <a href="{{route('employees.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -151,6 +160,8 @@
                     </div>
                 </a>
             </li>
+
+            
             <li class="menu {{ (Request::is('roles') ? 'active' : '') }}">
                 <a href="{{route('roles.index')}}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -201,8 +212,8 @@
                     <li class="{{ (Request::is('indicators/completo') ? 'active' : '') }}">
                         <a href="{{route('indicators.completo')}}"> Reporte Pd. Completos.</a>
                     </li>
-                    <li class="">
-                        <a href="#"> Reporte. Obsolescencia </a>
+                    <li class="{{ (Request::is('indicators/obsolescencia') ? 'active' : '') }}">
+                        <a href="{{route('indicators.obsolescencia')}}"> Reporte. Obsolescencia </a>
                     </li>      
                 </ul>
             </li>

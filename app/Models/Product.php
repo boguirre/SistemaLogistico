@@ -29,6 +29,9 @@ class Product extends Model
     public function orders(){
         return $this->hasMany(OrderDetail::class);
     }
-
+    public function outdateds(){
+        
+        return $this->hasMany(Outdated::class);
+    }
 
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OutdatedController;
 use App\Http\Controllers\PredictedController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseController;
@@ -13,7 +14,6 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Http\Controllers\UserController;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,6 +53,8 @@ Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderin
 Route::get('/orders/{order}/pdf',[OrderController::class, 'pdf'])->name('orders.pdf');
 Route::get('orders/report',[OrderController::class,'reportorder'])->name('orders.report');
 
+Route::resource('outdateds',OutdatedController::class)->names('outdateds');
+
 Route::resource('categories',CategoryController::class)->middleware('can:Modulo Categorias')->names('categories');
 Route::resource('measures',UnitMeasureController::class)->middleware('can:Modulo Unidad de Medida')->names('measures');
 Route::resource('products',ProductController::class)->middleware('can:Modulo Productos')->names('products');
@@ -67,6 +69,7 @@ Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->middlew
 Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->middleware('can:Modulo Roles')->name('users.updaterole');
 Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
 
+Route::get('indicators/obsolescencia',[IndicatorController::class,'index'])->name('indicators.obsolescencia');
 Route::get('indicators/tiempo',[IndicatorController::class,'pedidosTiempo'])->name('indicators.tiempo');
 Route::get('indicators/completo',[IndicatorController::class,'pedidosCompletos'])->name('indicators.completo');
 Route::get('predicted',[PredictedController::class,'index'])->name('predicted.index');
