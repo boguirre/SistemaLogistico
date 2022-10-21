@@ -86,9 +86,18 @@ class OutdatedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Outdated $outdated)
     {
-        
+
+        $request->validate([
+            'stock' => 'required',
+            'quantity' => 'required',
+            
+        ]);
+
+        $outdated->update($request->all());
+        return redirect()->route('outdateds.index')->with('guardar', 'ok');
+
     }
 
     /**
