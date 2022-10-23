@@ -47,7 +47,7 @@
                                                     <p class="align-self-center mb-0 admin-name"> {{$outdated->id}} </p>
                                                 </div>
                                             </td>
-                                            <td>{{$outdated->date_outdated}}</td>
+                                            <td>{{\Carbon\Carbon::parse($outdated->date_outdated)->format('Y-m-d')}}</td>
                                             <td>{{$outdated->product->name}}</td>
                                             <td>{{$outdated->stock}}</td>
                                             <td>{{$outdated->product->categories->name}}</td>
