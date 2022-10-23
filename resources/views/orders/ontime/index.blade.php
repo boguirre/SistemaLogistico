@@ -72,11 +72,11 @@
                             <td>
                                 @switch($order->statusend)
                                 @case('COMPLETO')
-                                <span class="text-center badge badge-light-warning inv-status" style="display: block">COMPLETO</span>
+                                <span class="text-center badge badge-light-success inv-status" style="display: block">COMPLETO</span>
 
                                 @break
                                 @case('INCOMPLETO')
-                                <span class="display badge badge-light-success inv-status">INCOMPLETO</span>
+                                <span class="display badge badge-light-warning inv-status" style="display: block">INCOMPLETO</span>
 
                                 @break
 
@@ -90,7 +90,7 @@
 
                                 @break
                                 @case('DESTIEMPO')
-                                <span class="display badge badge-light-danger inv-status">DESTIEMPO</span>
+                                <span class="display badge badge-light-danger inv-status" style="display: block">DESTIEMPO</span>
 
                                 @break
 

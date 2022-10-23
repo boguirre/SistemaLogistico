@@ -52,7 +52,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                            Total de Compras</div>
+                            Total de Entradas</div>
                         <div class="h3 mb-0 font-weight-bold text-gray-800">{{$totalpurchases}}</div>
                     </div>
                     <div class="col-auto">
@@ -72,7 +72,7 @@
               <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                          Compras del Mes</div>
+                          Entradas del Mes</div>
                       <div class="h3 mb-0 font-weight-bold text-gray-800">{{$purchases}}</div>
                   </div>
                   <div class="col-auto">
@@ -93,8 +93,8 @@
               <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                       <div class="text-xm font-weight-bold text-uppercase mb-1" style="color: #4C5755">
-                        Gastos de Compras</div>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">s/.{{number_format($total,2)}} </div>
+                        Total de Productos Entrantes</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">{{number_format($total,2)}} </div>
                   </div>
                   <div class="col-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -130,7 +130,7 @@
     <div class="card shadow mb-4">
         <div
             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold" style="color: #4C5755">Total De Compras Por Mes</h6>
+            <h6 class="m-0 font-weight-bold" style="color: #4C5755">Total De Entradas Por Mes</h6>
             
         </div>
         <div class="card-body">
@@ -146,7 +146,7 @@
 <div class="col-xl-4 col-lg-5">
   <div class="card shadow mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold" style="color: #4C5755">COMPRAS DEL MES CON ESTADOS:</h6>
+          <h6 class="m-0 font-weight-bold" style="color: #4C5755">ENTRADAS DEL MES CON ESTADOS:</h6>
           
       </div>
       <div class="card-body">

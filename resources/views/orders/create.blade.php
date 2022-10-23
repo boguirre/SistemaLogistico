@@ -184,14 +184,14 @@ function agregar() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'La cantidad a vender supera el stock.',
+                text: 'La cantidad a entregar supera el stock.',
             })
         }
     } else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Rellene todos los campos del detalle de la venta.',
+            text: 'Rellene todos los campos del detalle del pedido.',
         })
     }
 }

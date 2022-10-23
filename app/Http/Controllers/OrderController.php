@@ -18,7 +18,7 @@ class OrderController extends Controller
     
     public function index()
     {
-        $orders = Order::where('status','=','PENDIENTE')->get();
+        $orders = Order::where('status','=','PENDIENTE')->latest('id')->get();
         
         return view('orders.index',compact('orders'));
     }
@@ -129,14 +129,14 @@ class OrderController extends Controller
 
 
 
-        $orders =Order::where('status','=','ENTREGADO')->get();
+        $orders =Order::where('status','=','ENTREGADO')->latest('id')->get();
 
         return view('orders.culminated.index',compact('orders'));
     }
 
     public function ordercompleted(Order $order){
 
-        if($order->date_order_delivery < Carbon::now()->format('Y-m-d')){
+        if($order->date_order_delivery < Carbon::now()->format('Y-m-d h:i:s')){
             $order->update(['statusend'=>'COMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
         }
         else {
@@ -149,7 +149,7 @@ class OrderController extends Controller
 
     public function orderincompleted(Order $order){
 
-        if($order->date_order_delivery < Carbon::now()->format('Y-m-d')){
+        if($order->date_order_delivery < Carbon::now()->format('Y-m-d h:i:s')){
             $order->update(['statusend'=>'INCOMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
         }
         // $order->update(['status'=>'INCOMPLETO','status'=>'ENTREGADO']);
@@ -162,14 +162,14 @@ class OrderController extends Controller
 
     public function ontime(){
 
-        $orders =Order::where('status_delivery','=','TIEMPO')->get();
+        $orders =Order::where('status_delivery','=','TIEMPO')->latest('id')->get();
 
         return view('orders.ontime.index',compact('orders'));
 
     }
 
     public function untimely(){
-        $orders =Order::where('status_delivery','=','DESTIEMPO')->get();
+        $orders =Order::where('status_delivery','=','DESTIEMPO')->latest('id')->get();
 
         return view('orders.untimely.index',compact('orders'));
     }
