@@ -150,7 +150,7 @@ class OrderController extends Controller
 
     public function ordercompleted(Order $order){
 
-        if($order->date_order_delivery < Carbon::now()->format('Y-m-d h:i:s')){
+        if($order->date_order_delivery > Carbon::now()->format('Y-m-d h:i:s')){
             $order->update(['status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
         }
         else {

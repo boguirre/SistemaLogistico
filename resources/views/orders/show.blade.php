@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                @if ($order->statusend != 'COMPLETO' || $order->statusend != 'INCOMPLETO'  )
+                @if ($order->statusend && $order->status != 'ENTREGADO')
 
                 <div class="card-footer text-muted">
 
