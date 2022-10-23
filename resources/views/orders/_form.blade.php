@@ -19,6 +19,9 @@
     <label for="date_order_delivery">Fecha Entrega:</label>
     {!! Form::datetimelocal('date_order_delivery', null, ['class' => 'form-control ', 'style'=>'color:black; background:white'. ($errors->has('date_order_delivery') ? ' border-red-600' : '')]) !!}
 
+    @error('date_order_delivery')
+        <strong class="text-sm text-red-600">{{$message}}</strong>
+    @enderror 
 </div>
 
 </div>

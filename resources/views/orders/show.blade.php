@@ -48,18 +48,23 @@
                 @endif
                 <div class="card-body">
                     <div class="form-group row">
-                        <div class="col-md-4 text-center">
-                            <label class="form-control-label"><strong>Cliente</strong></label>
+                        <div class="col-md-3 text-center">
+                            <label class="form-control-label"><strong>Cliente Interno</strong></label>
                             <p><a href="{{route('employees.show', $order->employees->id)}}">{{$order->employees->name}}</a></p>
                         </div>
                         
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-3 text-center">
                             <label class="form-control-label"><strong>Usuario</strong></label>
                             <p>{{$order->user->name}}</p>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-md-3 text-center">
                             <label class="form-control-label"><strong>Número Pedido</strong></label>
                             <p>{{$order->id}}</p>
+                        </div>
+
+                        <div class="col-md-3 text-center">
+                            <label class="form-control-label"><strong>Fecha de Entrega</strong></label>
+                            <p>{{$order->date_order_delivery}}</p>
                         </div>
                         
                     </div>

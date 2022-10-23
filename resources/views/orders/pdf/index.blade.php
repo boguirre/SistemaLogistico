@@ -142,6 +142,10 @@
                             <p id="proveedor">
                                 AREA: {{$order->employees->areas->name}}
                             </p>
+
+                            <p id="proveedor">
+                                FECHA DE ENTREGA: {{$order->date_order_delivery}}
+                            </p>
                         </th>
                     </tr>
                 </tbody>
@@ -169,6 +173,7 @@
                     <tr id="fa">
                         <th>CANTIDAD</th>
                         <th>PRODUCTO</th>
+                        <th>CATEGORIA</th>
                         <th>UNIDAD DE MEDIDA</th>
                     </tr>
                 </thead>
@@ -177,6 +182,7 @@
                     <tr>
                         <td>{{$orderDetail->quantity}}</td>
                         <td>{{$orderDetail->product->name}}</td>
+                        <td>{{$orderDetail->product->categories->name}}</td>
                         <td>{{$orderDetail->product->measures->name}}</td>
                     </tr>
                     @endforeach
