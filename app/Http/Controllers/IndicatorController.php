@@ -14,6 +14,16 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class IndicatorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+         $this->middleware('can:indicator.index')->only('index');
+         $this->middleware('can:indicator.pedidosTiempo')->only('pedidosTiempo');
+         $this->middleware('can:indicator.pedidosCompletos')->only('pedidosCompletos');
+         $this->middleware('can:indicator.exportAllPediCompletos')->only('exportAllPediCompletos');
+         $this->middleware('can:indicator.exportAllPediTiempo')->only('exportAllPediTiempo');
+    }
+
     public function index()
     {
         $outdateds= DB::select('call spobsoleto');

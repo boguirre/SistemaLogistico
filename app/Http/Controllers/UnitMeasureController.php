@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class UnitMeasureController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+         $this->middleware('can:measure.index')->only('index');
+         $this->middleware('can:measure.edit')->only('edit','update');
+         $this->middleware('can:measure.create')->only('create','store');
+         $this->middleware('can:measure.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $measures = UnitMeasure::all();

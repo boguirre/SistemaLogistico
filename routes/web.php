@@ -40,33 +40,33 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->middleware('can:Modulo Productos')->name('get_products_by_id');
-Route::get('orders/culminated',[OrderController::class,'culminated'])->middleware('can:Modulo Pedidos')->name('orders.culminated');
-Route::get('orders/ontime',[OrderController::class,'ontime'])->middleware('can:Modulo Pedidos')->name('orders.ontime');
-Route::get('orders/untimely',[OrderController::class,'untimely'])->middleware('can:Modulo Pedidos')->name('orders.untimely');
+Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->name('get_products_by_id');
+Route::get('orders/culminated',[OrderController::class,'culminated'])->name('orders.culminated');
+Route::get('orders/ontime',[OrderController::class,'ontime'])->name('orders.ontime');
+Route::get('orders/untimely',[OrderController::class,'untimely'])->name('orders.untimely');
 Route::get('purchases/report',[PurchaseController::class,'reportpurchase'])->name('purchases.report');
 Route::get('/purchases/{purchase}/pdf',[PurchaseController::class, 'pdf'])->name('purchases.pdf');
 
 
-Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->middleware('can:Modulo Pedidos')->name('orders.ordercompleted');
-Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->middleware('can:Modulo Pedidos')->name('orders.orderincompleted');
+Route::post('/orders/{order}/ordercompleted',[OrderController::class, 'ordercompleted'])->name('orders.ordercompleted');
+Route::post('/orders/{order}/orderincompleted',[OrderController::class, 'orderincompleted'])->name('orders.orderincompleted');
 Route::get('/orders/{order}/pdf',[OrderController::class, 'pdf'])->name('orders.pdf');
 Route::get('orders/report',[OrderController::class,'reportorder'])->name('orders.report');
 
 Route::resource('outdateds',OutdatedController::class)->names('outdateds');
 
-Route::resource('categories',CategoryController::class)->middleware('can:Modulo Categorias')->names('categories');
-Route::resource('measures',UnitMeasureController::class)->middleware('can:Modulo Unidad de Medida')->names('measures');
-Route::resource('products',ProductController::class)->middleware('can:Modulo Productos')->names('products');
-Route::resource('supliers',SuplierController::class)->middleware('can:Modulo Proveedores')->names('supliers');
-Route::resource('employees',EmployeeController::class)->middleware('can:Modulo Empleados')->names('employees');
-Route::resource('purchases',PurchaseController::class)->middleware('can:Modulo compras')->names('purchases');
-Route::resource('orders',OrderController::class)->middleware('can:Modulo Pedidos')->names('orders');
-Route::resource('roles',RoleController::class)->middleware('can:Modulo Roles')->names('roles');
-Route::resource('areas',AreaController::class)->middleware('can:Modulo Areas')->names('areas');
-Route::resource('users',UserController::class)->middleware('can:Modulo Usuarios')->names('users');
-Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->middleware('can:Modulo Roles')->name('users.roles');
-Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->middleware('can:Modulo Roles')->name('users.updaterole');
+Route::resource('categories',CategoryController::class)->names('categories');
+Route::resource('measures',UnitMeasureController::class)->names('measures');
+Route::resource('products',ProductController::class)->names('products');
+Route::resource('supliers',SuplierController::class)->names('supliers');
+Route::resource('employees',EmployeeController::class)->names('employees');
+Route::resource('purchases',PurchaseController::class)->names('purchases');
+Route::resource('orders',OrderController::class)->names('orders');
+Route::resource('roles',RoleController::class)->names('roles');
+Route::resource('areas',AreaController::class)->names('areas');
+Route::resource('users',UserController::class)->names('users');
+Route::get('/users/{user}/editarol',[UserController::class, 'editrol'])->name('users.roles');
+Route::put('users/{user}/updaterol', [UserController::class, 'updaterol'])->name('users.updaterole');
 Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
 
 Route::get('indicators/obsolescencia',[IndicatorController::class,'index'])->name('indicators.obsolescencia');

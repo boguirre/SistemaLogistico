@@ -8,11 +8,15 @@ use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+         $this->middleware('can:roles.index')->only('index');
+         $this->middleware('can:roles.edit')->only('edit','update');
+         $this->middleware('can:roles.create')->only('create','store');
+         $this->middleware('can:roles.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $roles = Role::all();

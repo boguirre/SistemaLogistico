@@ -15,6 +15,20 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    public function __construct()
+    {
+         $this->middleware('auth');
+         $this->middleware('can:orders.index')->only('index');
+         $this->middleware('can:orders.show')->only('show');
+         $this->middleware('can:orders.create')->only('create','store');
+         $this->middleware('can:orders.culminated')->only('culminated');
+         $this->middleware('can:orders.ordercompleted')->only('ordercompleted');
+         $this->middleware('can:orders.orderincompleted')->only('orderincompleted');
+         $this->middleware('can:orders.ontime')->only('ontime');
+         $this->middleware('can:orders.untimely')->only('untimely');
+         $this->middleware('can:orders.pdf')->only('pdf');
+         $this->middleware('can:orders.reportorder')->only('reportorder');
+    }
     
     public function index()
     {

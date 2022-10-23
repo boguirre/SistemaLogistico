@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class SuplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+         $this->middleware('can:suplier.index')->only('index');
+         $this->middleware('can:suplier.edit')->only('edit','update');
+         $this->middleware('can:suplier.create')->only('create','store');
+         $this->middleware('can:suplier.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $supliers= Suplier::all();

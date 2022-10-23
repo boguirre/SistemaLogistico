@@ -15,11 +15,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PurchaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+         $this->middleware('can:purchases.index')->only('index');
+         $this->middleware('can:purchases.show')->only('show');
+         $this->middleware('can:purchases.create')->only('create','store');
+         $this->middleware('can:purchases.pdf')->only('pdf');
+         $this->middleware('can:purchases.reportpurchase')->only('reportpurchase');
+    }
+
     public function index()
     {
         $purchases = Purchase::all();

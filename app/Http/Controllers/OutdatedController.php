@@ -9,11 +9,15 @@ use Illuminate\Http\Request;
 
 class OutdatedController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+         $this->middleware('auth');
+         $this->middleware('can:outdated.index')->only('index');
+         $this->middleware('can:outdated.edit')->only('edit','update');
+         $this->middleware('can:outdated.create')->only('create','store');
+         $this->middleware('can:outdated.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $outdateds = Outdated::all();
