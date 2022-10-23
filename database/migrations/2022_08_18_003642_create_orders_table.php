@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->dateTime('date_order');
-            $table->date('date_order_delivery');
+            $table->datetime('date_order_delivery');
             $table->decimal('total');
             $table->enum('status',['PENDIENTE','ENTREGADO'])->default('PENDIENTE');
             $table->enum('statusend',['COMPLETO','INCOMPLETO'])->nullable();
