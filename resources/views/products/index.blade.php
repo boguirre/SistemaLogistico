@@ -51,10 +51,12 @@
                                                     <p class="align-self-center mb-0 admin-name"> {{$product->id}} </p>
                                                 </div>
                                             </td>
-                                            <td>{{$product->name}}</td>
+                                            <td>{{Str::limit($product->name, 100)}}</td>
                                             <td>{{$product->categories->name}}</td>
                                             <td>{{$product->supliers->name}}</td>
                                             <td>{{$product->measures->name}}</td>
+
+                                            
                                             <td>
                                                 
                                                 @if($product->stock > $product->stockmin)
