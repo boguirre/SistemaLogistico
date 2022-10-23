@@ -6,6 +6,7 @@
        <div class="row">
 
     <h4 class="mt-5">Editar Producto Obsoleto</h4>
+
     {!! Form::model($outdated, ['route' => ['outdateds.update', $outdated], 'method' => 'put','files'=>true, 'class'=>'formulario row g-3']) !!}
    
     <div class="col-md-6">
@@ -17,7 +18,9 @@
     </div>
     <div class="col-md-6">
         <label for="name" class="form-label">Stock</label>
+
         <input type="number" class="form-control" id="stock" name="stock" style="color: white" value="{{$outdated->stock}}">
+
         @error('stock')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror   
@@ -25,6 +28,7 @@
     <div class="col-md-6">
         <label for="name" class="form-label">Cantidad</label>
         <input type="number" class="form-control" id="quantity" name="quantity" style="color: white"  value="{{$outdated->quantity}}">
+
         @error('quantity')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror   

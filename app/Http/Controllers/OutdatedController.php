@@ -88,6 +88,7 @@ class OutdatedController extends Controller
      */
     public function update(Request $request,Outdated $outdated)
     {
+
         $request->validate([
             'stock' => 'required',
             'quantity' => 'required',
