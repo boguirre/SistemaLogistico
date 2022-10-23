@@ -151,10 +151,10 @@ class OrderController extends Controller
     public function ordercompleted(Order $order){
 
         if($order->date_order_delivery < Carbon::now()->format('Y-m-d h:i:s')){
-            $order->update(['statusend'=>'COMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
+            $order->update(['status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
         }
         else {
-            $order->update(['statusend'=>'COMPLETO','status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
+            $order->update(['status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
         }
 
         return redirect()->route('orders.index')->with('editar', 'ok');
@@ -164,11 +164,11 @@ class OrderController extends Controller
     public function orderincompleted(Order $order){
 
         if($order->date_order_delivery < Carbon::now()->format('Y-m-d h:i:s')){
-            $order->update(['statusend'=>'INCOMPLETO','status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
+            $order->update(['status'=>'ENTREGADO','status_delivery'=>'DESTIEMPO']);
         }
         // $order->update(['status'=>'INCOMPLETO','status'=>'ENTREGADO']);
         else{
-            $order->update(['statusend'=>'INCOMPLETO','status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
+            $order->update(['status'=>'ENTREGADO','status_delivery'=>'TIEMPO']);
         }
 
         return redirect()->route('orders.index')->with('editar', 'ok');

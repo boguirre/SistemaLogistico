@@ -61,6 +61,14 @@
         <label for="quantity">Cantidad</label>
         <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
     </div>
+
+    <div class="col-md-3">
+        <label for="quantity">Estado del Pedido</label>
+        <select class="form-control" name="statusend" id="statusend" style="color: white">
+            <option value="COMPLETO">COMPLETO</option>
+            <option value="INCOMPLETO">INCOMPLETO</option>
+        </select>
+    </div>
   </div>
 
 

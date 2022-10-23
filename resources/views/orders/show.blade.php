@@ -24,22 +24,16 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                @if ($order->statusend != 'COMPLETO' && $order->statusend != 'INCOMPLETO'  )
+                @if ($order->statusend != 'COMPLETO' || $order->statusend != 'INCOMPLETO'  )
 
                 <div class="card-footer text-muted">
 
                 <a><form action="{{route('orders.ordercompleted', $order)}}" class=" aceptar" method="POST" style="float: right;">
                 @csrf
                 <button class="btn w-full" type="submit" style="color:aliceblue; background-color: #3d9970">
-                    Pedido Completo</button>
+                    Entregar Pedido</button>
                 </form></a>
-                <a >
-                <form action="{{route('orders.orderincompleted', $order)}}" class=" " method="POST" style="float: right;">
-                        @csrf
-                        <button class="btn btn-danger w-full" type="submit" >
-                            Pedido Incompleto</button>
-                </form></a>
-                <h4>EL PEDIDO ACTUALMENTE LLEGO EN UN ESTADO:</h4>
+                <h4>EL PEDIDO ACTUALMENTE ESTA EN UN ESTADO: {{$order->statusend}}</h4>
                 </div>
                 <div class="card-footer text-muted">
                 </div>
