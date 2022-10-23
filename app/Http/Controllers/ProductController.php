@@ -35,11 +35,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:50',
+            'name' => 'required|max:250',
             'suplier_id' => 'required',
             'unit_measure_id' => 'required',
             'category_id' => 'required',
-            'code' => 'required|max:50',
+            // 'code' => 'required|max:50',
             'stockmin'=>'required|numeric|min:1|max:99999999'
             
         ]);
@@ -72,7 +72,7 @@ class ProductController extends Controller
             'suplier_id' => 'required',
             'unit_measure_id' => 'required',
             'category_id' => 'required',
-            'code' => 'required|max:50',
+            // 'code' => 'required|max:50',
             'stock' => 'numeric|required|min:1|max:99999999'
             
         ]);

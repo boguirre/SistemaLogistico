@@ -49,7 +49,7 @@
                                 <x-jet-validation-errors class="mb-4" style="color:red"/>
 
                                 <form method="POST" action="{{ route('login') }}">
-                                    @csrf
+                                @csrf
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
