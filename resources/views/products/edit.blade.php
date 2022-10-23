@@ -30,8 +30,8 @@
         </div>
         
         <div class="col-md-6">
-            <label for="stock" class="form-label">Stock Minimo</label>
-            <input type="stock" class="form-control" id="stock" name="stock" value="{{$product->stockmin}}"> 
+            <label for="number" class="form-label">Stock Minimo</label>
+            <input type="number" class="form-control" id="stockmin" name="stockmin" value="{{$product->stockmin}}"> 
         </div>
         
 
