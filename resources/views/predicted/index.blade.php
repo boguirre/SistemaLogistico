@@ -1,5 +1,83 @@
-{{--
-<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<py-env>
+   - pandas
+   - pystan
+   - fbprophet
+</py-env>
+</head>
+<body>
+<div class="jumbotron">
+   <h1>PREDICCIONES DE DEMANDA DE PRODUCTOS</h1>
+   <p class="lead">
+      Grafico representativa de la demanda de productos en un periodo de 2 años
+   </p>
+</div>
+<div class="row">
+   <div class="col-sm-6 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+      <div id="chart1"></div>
+   </div>
+</div>
+<py-script>
+# Import libraries
+import pandas as pd 
+from fbprophet import Prophet 
+from fbprophet.plot import add_changepoints_to_plot
+from pyodide.http import open_url
+
+url = 'https://raw.githubusercontent.com/rahulhegde99/Time-Series-Analysis-and-Forecasting-of-Air-Passengers/master/airpassengers.csv'
+url_content = open_url(url)
+data = pd.read_csv(url_content)
+data.head()
+
+df = pd.DataFrame() 
+df['ds'] = pd.to_datetime(data['Month']) 
+df['y'] = data['#Passengers'] 
+df.head() 
+
+m = Prophet() 
+m.fit(df)
+
+future = m.make_future_dataframe(periods=12 * 2, freq='M') 
+
+forecast = m.predict(future) 
+forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper', 'trend', 'trend_lower', 'trend_upper']].tail()
+
+fig1 = m.plot(forecast) 
+pyscript.write("chart1", fig1)
+{{-- import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+# Get the data
+from pyodide.http import open_url
+url = 'https://raw.githubusercontent.com/rahulhegde99/Time-Series-Analysis-and-Forecasting-of-Air-Passengers/master/airpassengers.csv'
+url_content = open_url(url)
+data = pd.read_csv(url_content)
+data.head()
+
+df = pd.DataFrame() 
+df['ds'] = pd.to_datetime(data['Month']) 
+df['y'] = data['#Passengers'] 
+df.head()
+
+from fbprophet import Prophet 
+from fbprophet.plot import add_changepoints_to_plot
+m = Prophet() 
+m.fit(df)
+
+future = m.make_future_dataframe(periods=12 * 2, freq='M') 
+forecast = m.predict(future) 
+forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper', 'trend', 'trend_lower', 'trend_upper']].tail()
+
+fig1 = m.plot(forecast)
+pyscript.write("chart1",fig1) --}}
+</py-script>
+</body>
+</html>
+{{-- <!DOCTYPE html>
 <html lang="es">
 
 <html>
@@ -139,130 +217,31 @@
 </body>
 
 </html> --}}
-
+{{-- 
 @extends('layouts.panel')
 
+@section('css')
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-env>
+        - pandas
+    </py-env>
+@endsection
+
 @section('content')
-{{-- <div class="row layout-top-spacing">
+<b><p>Today is <u><label id='today'></label></u></p></b>
+    <br>
+    <div id="data" class="alert alert-primary"></div>
+    <py-script>
+        import pandas as pd 
 
-    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
-
-        <div class="card">
-            <div class="card-body">
-
-                <div class="widget widget-chart-two">
-                    <div class="widget-heading">
-                        <h5 class="">Sales by Category</h5>
-                    </div>
-                    <div class="widget-content">
-                        <div id="" class="">
-                            <canvas id="myChart" width="400" height="400"></canvas>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-</div> --}}
-<br>
-<br>
-<div class="page-header">
-    <h3 class="page-title">
-
-    </h3>
-    {{-- <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-            <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Mis Asistencias</li>
-        </ol>
-    </nav> --}}
-
-    <div class="row">
-
-
-
-
-        {{-- <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-
-                    <a class="card style-6  mb-md-0 mb-4" href="{{url('/predicted/completo')}}" target="_blank">
-                        <span class="badge badge-danger">PREDICTION</span>
-                        <img src="./assets/img/pedido.jpg" class="card-img-top" alt="...">
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-12 mb-4">
-                                    <b class="text-center">REALIZAR PREDICCIONES PARA PEDIDOS COMPLETOS</b>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-
-                    <a class="card style-6  mb-md-0 mb-4" href="{{url('/predicted/tiempo')}}" target="_blank">
-                        <span class="badge badge-danger">PREDICTION</span>
-                        <img src="./assets/img/pedido.jpg" class="card-img-top" alt="...">
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-12 mb-4">
-                                    <b class="text-center">REALIZAR PREDICCIONES PARA PEDIDOS A TIEMPO</b>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-xl-4 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-
-                    <a class="card style-6  mb-md-0 mb-4" href="javascript:void(0);">
-                        <span class="badge badge-danger">PREDICTION</span>
-                        <img src="./assets/img/caja.jpg" class="card-img-top" alt="...">
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-12 mb-4">
-                                    <b class="text-center">REALIZAR PREDICCIONES DE OBSOLESCENCIA</b>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div> --}}
-
-
-
-    </div>
-
-
-</div>
+        data = pd.read_csv('https://raw.githubusercontent.com/rahulhegde99/Time-Series-Analysis-and-Forecasting-of-Air-Passengers/master/airpassengers.csv') 
+        data.head()
+    </py-script>
 
 
 @endsection
 
 @section('scripts')
 
-@endsection
+@endsection --}}
