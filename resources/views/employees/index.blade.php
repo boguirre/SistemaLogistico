@@ -6,7 +6,7 @@
                     <!-- BREADCRUMB -->
                     <div class="page-meta">
                         {{-- <div class="col text-right"> --}}
-                        <a href="{{url('/employees/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Crear Empleado</a>
+                        <a href="{{url('/employees/create')}}" class="btn btn-xm btn-primary"  style="float: right;">Registrar Empleado</a>
                           {{-- </div> --}}
                         <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                             <ol class="breadcrumb">

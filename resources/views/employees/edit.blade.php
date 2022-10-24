@@ -5,7 +5,7 @@
 <div class="container">
        <div class="row">
 
-    <h4 class="mt-5">Crear Empleado</h4>
+    <h4 class="mt-5">Editar Empleado</h4>
     {!! Form::model($employee, ['route' => ['employees.update', $employee], 'method' => 'put','files'=>true, 'class'=>'formulario row g-3']) !!}
 
     <div class="col-md-6">

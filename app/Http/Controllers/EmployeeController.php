@@ -52,12 +52,12 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'phone' => 'required|max:9',
-            'address' => 'required|max:255',
-            'numberdocument' => 'required|max:11',
+            'phone' => 'max:9',
+            'address' => 'max:255',
+            'numberdocument' => 'max:11',
             'employee_type_id' => 'required',
             'area_id' => 'required',
-            'datebirth' => 'required'            
+            // 'datebirth' => 'date'            
         ]);
     
         $employee = Employee::create($request->all());
@@ -107,12 +107,12 @@ class EmployeeController extends Controller
         $request->validate([
             'name' => 'required|max:50',
             'lastname' => 'required|max:50',
-            'phone' => 'required|max:9',
-            'address' => 'required|max:50',
-            'numberdocument' => 'required|max:11',
+            'phone' => 'max:9',
+            'address' => 'max:250',
+            'numberdocument' => 'max:11',
             'employee_type_id' => 'required',
             'area_id' => 'required',
-            'datebirth' => 'required'
+            // 'datebirth' => 'date'
             
         ]);
         

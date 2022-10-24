@@ -5,7 +5,7 @@
 <div class="container">
        <div class="row">
 
-    <h4 class="mt-5">Crear Empleado</h4>
+    <h4 class="mt-5">Registrar Empleado</h4>
     {!! Form::open(['route' => 'employees.store', 'autocomplete' => 'off', 'files' => true, 'class'=>'formulario row g-3']) !!}
 
     <div class="col-md-6">

@@ -48,7 +48,7 @@
                                                 </div>
                                             </td>
                                             <td>{{\Carbon\Carbon::parse($outdated->date_outdated)->format('Y-m-d')}}</td>
-                                            <td>{{$outdated->product->name}}</td>
+                                            <td> {{Str::limit($outdated->product->name, 100)}}</td>
                                             <td>{{$outdated->stock}}</td>
                                             <td>{{$outdated->product->categories->name}}</td>
                                             <td>{{$outdated->quantity}}</td>
