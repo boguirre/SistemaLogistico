@@ -72,8 +72,11 @@ Route::match(['get', 'post'], '/botman', [BotManController::class,"handle"]);
 Route::get('indicators/obsolescencia',[IndicatorController::class,'index'])->name('indicators.obsolescencia');
 Route::get('indicators/tiempo',[IndicatorController::class,'pedidosTiempo'])->name('indicators.tiempo');
 Route::get('indicators/completo',[IndicatorController::class,'pedidosCompletos'])->name('indicators.completo');
+
 Route::get('predicted',[PredictedController::class,'index'])->name('predicted.index');
-Route::get('predicted/completo',[PredictedController::class,'predictedcompleted'])->name('predicted.completo');
+Route::get('predicted/create',[PredictedController::class,'create'])->name('predicted.create');
+Route::post('predicted/flask/',[PredictedController::class,'predicted'])->name('predicted.post');
+
 Route::get('predicted/tiempo',[PredictedController::class,'predictedtime'])->name('predicted.tiempo');
 Route::get('indicators/export/', [IndicatorController::class, 'exportAllPediCompletos'])->name('indicators.export');
 Route::get('indicators/exporttiempo/', [IndicatorController::class, 'exportAllPediTiempo'])->name('indicators.exporttiempo');

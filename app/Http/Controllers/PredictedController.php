@@ -12,18 +12,22 @@ class PredictedController extends Controller
     public function index(){
 
         $response = Http::post('http://127.0.0.1:5000/katana-ml/api/v1.0/forecast/ironsteel', [
-            'horizon' => '24',
+            'horizon' => '12',
         ]);
 
         return view('predicted.index', compact('response'));
     }
 
-    public function predictedcompleted(){
-        return view('predicted.completed.index');
+    public function create(){
+        return view('predicted.create');
     }
 
-    public function predictedtime(){
-        return view('predicted.time.index');
+    public function predicted(Request $request){
+        $response = Http::post('http://127.0.0.1:5000/katana-ml/api/v1.0/forecast/ironsteel', [
+            'horizon' => $request->number,
+        ]);
+
+        return view('predicted.index', compact('response'));
 
     }
 }
