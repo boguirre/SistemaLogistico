@@ -42,14 +42,15 @@
                     @foreach ($response->json() as $item)
                     <tr>
                         <td>
-                            {{$item['ds']}}
+                            {{\Carbon\Carbon::parse($item['ds'])->format('Y-m-d')}}
+                            {{-- {{$item['ds']}} --}}
                         </td>
                         <td>
-                            {{$item['yhat']}}
+                            {{round($item['yhat'], 2)}}
                         </td>
-                        <td>{{$item['yhat_lower']}}</td>
+                        <td>{{round($item['yhat_lower'], 2)}}</td>
                         <td>
-                            {{$item['yhat_upper']}}
+                            {{round($item['yhat_upper'], 2)}}
                         </td>
                     </tr>
 
