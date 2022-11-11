@@ -44,7 +44,6 @@
  
                         <td>
                             
-                            {{$item['yhat']}}
                             {{\Carbon\Carbon::parse($item['ds'])->format('Y-m-d')}}
                         </td>
                         <td>
