@@ -11,7 +11,7 @@ class PredictedController extends Controller
 {
     public function index(){
 
-        $response = Http::post('http://127.0.0.1:5000/katana-ml/api/v1.0/forecast/ironsteel', [
+        $response = Http::post('https://appflaskccx.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
             'horizon' => '12',
         ]);
 
@@ -23,7 +23,7 @@ class PredictedController extends Controller
     }
 
     public function predicted(Request $request){
-        $response = Http::post('http://127.0.0.1:5000/katana-ml/api/v1.0/forecast/ironsteel', [
+        $response = Http::post('https://appflaskccx.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
             'horizon' => $request->number,
         ]);
 
