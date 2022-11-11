@@ -27,9 +27,11 @@
                     @foreach ($response->json() as $item)
                     <tr>
                         <td>
-                            {{$item['ds']}}
+                            {{-- {{$item['ds']}} --}}
+                            {{\Carbon\Carbon::parse($item['ds'])->format('Y-m-d')}}
                         </td>
                         <td>
+                            
                             {{$item['yhat']}}
                         </td>
                         <td>{{$item['yhat_lower']}}</td>
