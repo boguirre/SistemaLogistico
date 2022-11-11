@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('suplier_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->dateTime('date_purchase');
-            $table->decimal('tax');
+            $table->decimal('tax')->nullable();
             $table->decimal('total');
             $table->enum('status',['VALID','CANCELED'])->default('VALID');
             $table->foreign('suplier_id')->references('id')->on('supliers')->onDelete('set null');

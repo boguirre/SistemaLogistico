@@ -21,8 +21,8 @@ return new class extends Migration
             $table->datetime('date_order_delivery');
             $table->decimal('total');
             $table->enum('status',['PENDIENTE','ENTREGADO'])->default('PENDIENTE');
-            $table->enum('statusend',['COMPLETO','INCOMPLETO'])->nullable();
-            $table->enum('status_delivery',['TIEMPO','DESTIEMPO'])->nullable();
+            $table->enum('statusend',['PROCESO','COMPLETO','INCOMPLETO'])->nullable()->default('PROCESO');
+            $table->enum('status_delivery',['PROCESO','TIEMPO','DESTIEMPO'])->nullable()->default('PROCESO');
 
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('set null');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');

@@ -19,12 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('unit_measure_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->string('name');
-            $table->integer('stock');
+            $table->integer('stock')->nullable()->default('0');
             $table->integer('stockmin');
             $table->string('image')->nullable();
             $table->string('code')->nullable();
             $table->string('status');
-            $table->decimal('price');
+            $table->decimal('price')->nullable();
             $table->foreign('suplier_id')->references('id')->on('supliers')->onDelete('set null');
             $table->foreign('unit_measure_id')->references('id')->on('unit_measures')->onDelete('set null');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
