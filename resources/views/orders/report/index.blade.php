@@ -215,7 +215,7 @@
             data: {
             labels:["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
             datasets: [{
-                label: '# De Total De Pedidos',
+                label: '# De Total De Cursos',
                 data:cData.report,
                 backgroundColor: [
                     '#e1bee7',

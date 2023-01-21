@@ -95,7 +95,7 @@
                 <tr>
                     <th colspan="5">
                         <p align="right">TOTAL DE PRODUCTOS:</p>
-                    </th>
+                    </th> 
                     <th>
                         <p align="right"><span id="total_html">0.00</span> <input type="hidden" name="total" id="total_value"></p>
                     </th>
