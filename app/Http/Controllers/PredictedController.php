@@ -12,7 +12,8 @@ class PredictedController extends Controller
     public function index(){
 
         $response = Http::post('https://apiflask.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
-            'horizon' => '12',
+            'horizon' => '24',
+
         ]);
 
         return view('predicted.index', compact('response'));
