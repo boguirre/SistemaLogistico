@@ -45,7 +45,7 @@
                             <td>{{$tiempos->TEMPRANO}}</td>
                             {{-- <td>{{$tiempos->DESTIEMPO}}</td> --}}
                             <td>{{$tiempos->TOTALPEDIDOS}}</td>
-                            <td>{{$tiempos->TEMPRANO / $tiempos->TOTALPEDIDOS}}</td>
+                            <td>{{round($tiempos->TEMPRANO / $tiempos->TOTALPEDIDOS, 2)}}</td>
 
 
 

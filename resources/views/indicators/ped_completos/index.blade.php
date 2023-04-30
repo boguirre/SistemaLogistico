@@ -44,7 +44,7 @@
                                             <td>{{$completos->COMPLETO}}</td>
                                             {{-- <td>{{$completos->INCOMPLETO}}</td> --}}
                                             <td>{{$completos->TOTALPEDIDOS}}</td>
-                                            <td>{{$completos->COMPLETO / $completos->TOTALPEDIDOS}}</td>
+                                            <td>{{round($completos->COMPLETO / $completos->TOTALPEDIDOS, 2)}}</td>
 
                                             
 

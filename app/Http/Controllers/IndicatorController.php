@@ -45,9 +45,7 @@ class IndicatorController extends Controller
     
 
     public function exportAllPediCompletos(){
-        return Excel::download(new PedidosCompletosExport, 'pedidostiempo.csv',\Maatwebsite\Excel\Excel::CSV, [
-            'Content-Type' => 'text/csv',
-      ] );
+        return Excel::download(new PedidosCompletosExport, 'pedidostiempo.xlsx');
     
     }
     public function exportAllPediTiempo(){
