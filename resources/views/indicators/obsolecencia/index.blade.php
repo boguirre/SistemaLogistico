@@ -37,7 +37,7 @@
                             <td>{{$outdated->Tobsoletos}}</td>
                             {{-- <td>{{$outdated->DESTIEMPO}}</td> --}}
                             <td>{{$outdated->total}}</td>
-                            <td>{{$outdated->Tobsoletos / $outdated->total}}</td>
+                            <td>{{round($outdated->Tobsoletos / $outdated->total, 2)}}</td>
 
 
 
