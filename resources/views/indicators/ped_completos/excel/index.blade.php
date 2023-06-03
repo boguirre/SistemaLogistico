@@ -13,7 +13,7 @@
             <td>{{$completos->TIEMPO}}</td>
             <td>{{$completos->COMPLETO}}</td>
             <td>{{$completos->TOTALPEDIDOS}}</td>
-            <td>{{$completos->COMPLETO / $completos->TOTALPEDIDOS}}</td>
+            <td>{{round($completos->COMPLETO / $completos->TOTALPEDIDOS, 2)}}</td>
         </tr>
         @endforeach
     </tbody>
