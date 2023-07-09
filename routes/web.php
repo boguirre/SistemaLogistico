@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BotManController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DamagedController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\OrderController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\UnitMeasureController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +42,15 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('cmd/{command}', function ($command) {
+    Artisan::call($command);
+    dd(Artisan::output());
+});
+
+
+Route::delete('damageds/{damaged}/activar', [DamagedController::class, 'cambio_estado'])->name('damageds.estado');
+Route::resource('damageds', DamagedController::class)->names('damageds');
 Route::get('get_products_by_id',[ProductController::class, 'get_products_by_id'])->name('get_products_by_id');
 Route::get('orders/culminated',[OrderController::class,'culminated'])->name('orders.culminated');
 Route::get('orders/ontime',[OrderController::class,'ontime'])->name('orders.ontime');

@@ -33,5 +33,8 @@ class Product extends Model
         
         return $this->hasMany(Outdated::class);
     }
-
+    public function damageds(){
+        
+        return $this->hasMany(Damaged::class);
+    }
 }

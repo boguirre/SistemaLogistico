@@ -65,60 +65,157 @@
 
         </div>
 
-        {{-- <div class="row layout-top-spacing">
-            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-                <div class="widget-content widget-content-area br-8">
-                    <canvas id="scatterChart"></canvas>
+        <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold" style="color: #4C5755">Total De Pedidos por Mes</h6>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area pt-4 pb-2">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div> --}}
+        </div>
     @endsection
 
     @section('scripts')
         {{-- <script>
-            var ctx = document.getElementById('scatterChart').getContext('2d');
-            var scatterChart = new Chart(ctx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Datos de dispersión',
-                        data: [{
-                                x: 1,
-                                y: 1
-                            },
-                            {
-                                x: 2,
-                                y: 3
-                            },
-                            {
-                                x: 3,
-                                y: 2
-                            },
-                            {
-                                x: 4,
-                                y: 5
-                            },
-                            {
-                                x: 5,
-                                y: 4
+            $(document).ready(function() {
+
+                const cData = JSON.parse(`<?php echo $response; ?>`)
+                console.log(cData);
+                console.log('joan' + cData[0].yhat);
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [new Date(cData[0].ds), cData[1].ds, cData[3].ds, cData[4].ds, cData[5].ds],
+                        datasets: [{
+                            label: '# De Total De Cursos',
+                            data: [cData[0].yhat, cData[1].yhat, cData[3].yhat, cData[4].yhat, cData[5]
+                                .yhat
+                            ],
+                            backgroundColor: [
+                                '#e1bee7',
+                                '#e1bHJH',
+                                '#e1bee7',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                '#e1bee7',
+                                '#e1bHJH',
+                                '#e1bee7',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+
+                            borderWidth: 1,
+
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: {
+                                beginAtZero: true
                             }
-                        ]
-                    }]
-                },
-                options: {
-                    responsive: false,
-                    scales: {
-                        x: {
-                            type: 'linear',
-                            position: 'bottom'
-                        },
-                        y: {
-                            type: 'linear',
-                            position: 'left'
                         }
-                    }
-                }
+                    },
+
+
+                });
+
+
             });
         </script> --}}
+
+        <script>
+            $(document).ready(function() {
+                const cData = JSON.parse(`<?php echo $response; ?>`);
+                console.log(cData);
+                console.log('joan' + cData[0].yhat);
+
+                const formatDate = (dateString) => {
+                    const date = new Date(dateString);
+                    return date.toLocaleDateString(); // Formato de fecha personalizable
+                };
+
+                const formattedLabels = [
+                    formatDate(cData[0].ds),
+                    formatDate(cData[1].ds),
+                    formatDate(cData[2].ds),
+                    formatDate(cData[3].ds),
+                    formatDate(cData[4].ds),
+                    formatDate(cData[5].ds),
+
+                ];
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: formattedLabels,
+                        datasets: [{
+                            label: '# De Total De Cursos',
+                            data: [
+                                cData[0].yhat_upper,
+                                cData[1].yhat_upper,
+                                cData[2].yhat_upper,
+
+                                cData[3].yhat_upper,
+                                cData[4].yhat_upper,
+                                cData[5].yhat_upper
+                            ],
+                            backgroundColor: [
+                                '#e1bee7',
+                                '#e1bHJH',
+                                '#e1bee7',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                '#e1bee7',
+                                '#e1bHJH',
+                                '#e1bee7',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
     @endsection

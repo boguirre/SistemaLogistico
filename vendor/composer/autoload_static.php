@@ -765,6 +765,7 @@ class ComposerStaticInit821e18fa9f0e3169b8c0895f8d37c8f4
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Area' => __DIR__ . '/../..' . '/app/Models/Area.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Damaged' => __DIR__ . '/../..' . '/app/Models/Damaged.php',
         'App\\Models\\DocumentType' => __DIR__ . '/../..' . '/app/Models/DocumentType.php',
         'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
         'App\\Models\\EmployeeType' => __DIR__ . '/../..' . '/app/Models/EmployeeType.php',

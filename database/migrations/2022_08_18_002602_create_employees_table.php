@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('datebirth');
             $table->string('address');
             $table->string('numberdocument');
+            $table->string('status')->default(1);
             
             $table->timestamps();
         });

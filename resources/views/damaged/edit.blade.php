@@ -5,42 +5,34 @@
 <div class="container">
        <div class="row">
 
-    <h4 class="mt-5">Agregar Producto Obsoleto</h4>
-    {!! Form::open(['route' => 'outdateds.store', 'autocomplete' => 'off', 'files' => true, 'class'=>'formulario row g-3']) !!}
+    <h4 class="mt-5">Editar Producto Obsoleto</h4>
 
-
-    
+    {!! Form::model($outdated, ['route' => ['outdateds.update', $outdated], 'method' => 'put','files'=>true, 'class'=>'formulario row g-3']) !!}
+   
     <div class="col-md-6">
         <label for="name" class="form-label">Producto</label>
-        <select class="form-control" name="product_id" id="product_id" style="color: white">
-            <option  value="" disabled selected>Selecccione un producto</option>
-            @foreach ($products as $product)
-            <option value="{{$product->id}}_{{$product->name}}_{{$product->stock}}_{{$product->total_quantity}}">{{$product->name}}</option>
-            @endforeach
-        </select>        @error('product_id')
+        {!! Form::select('product_id', $products, null, ['class' => 'form-control  block w-full mt-1','style'=>'color:white','disabled', 'placeholder'=>'Seleccione Un Producto .....']) !!}                   
+        @error('product_id')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror                   
     </div>
     <div class="col-md-6">
         <label for="name" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="stock" name="stock" style="color: white" readonly>
+
+        <input type="number" class="form-control" id="stock" name="stock" style="color: white" value="{{$outdated->stock}}">
+
         @error('stock')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror   
     </div>
     <div class="col-md-6">
         <label for="name" class="form-label">Cantidad</label>
-        <input type="number" class="form-control" id="quantity" name="quantity" style="color: white" readonly>
+        <input type="number" class="form-control" id="quantity" name="quantity" style="color: white"  value="{{$outdated->quantity}}">
+
         @error('quantity')
             <strong class="text-sm text-red-600">{{$message}}</strong>
         @enderror   
     </div>
-    
-      
-        
-        
-       
-
         <div class="col-12">
             <button type="submit" class="btn btn-primary" style="float: right;">Guardar Información</button>
         </div>
@@ -56,8 +48,8 @@
 <script>
     function mostrarValores() {
         datosProducto = document.getElementById('product_id').value.split('_');
-        $("#quantity").val(datosProducto[3]);
-        $("#stock").val(datosProducto[2]);
+        $("#price").val(datosProducto[2]);
+        $("#stock").val(datosProducto[1]);
     };
 
     $("#product_id").on('change',mostrarValores);
