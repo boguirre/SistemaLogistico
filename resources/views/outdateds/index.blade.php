@@ -22,13 +22,13 @@
         <div class="row layout-top-spacing">
             <div class="col-md-12">
 
-                <form >
+                <form>
                     <div class="row">
                         <div class="col-md-3">
-                            
+
                             <label for="mes" class="form-label">Mes:</label>
                             <select class="form-control" name="mes" id="mes" style="color: white" required>
-                                <option  value="" disabled selected>Selecccione un mes</option>
+                                <option value="" disabled selected>Selecccione un mes</option>
                                 <option value="1"> Enero</option>
                                 <option value="2"> Febrero </option>
                                 <option value="3"> Marzo </option>
@@ -41,32 +41,32 @@
                                 <option value="10"> Octubre</option>
                                 <option value="11"> Noviembre</option>
                                 <option value="12"> Diciembre</option>
-    
-                            </select>       
-                             @error('mes')
-                                <strong class="text-sm text-red-600">{{$message}}</strong>
-                            @enderror 
+
+                            </select>
+                            @error('mes')
+                                <strong class="text-sm text-red-600">{{ $message }}</strong>
+                            @enderror
                         </div>
-        
+
                         <div class="col-md-3">
                             <label for="año" class="form-label">Año:</label>
                             <select class="form-control" name="año" id="año" style="color: white" required>
-                                <option  value="" disabled selected>Selecccione un Año</option>
+                                <option value="" disabled selected>Selecccione un Año</option>
                                 <option value="2023" selected> 2023</option>
-                                
-    
-                            </select>       
-                             @error('mes')
-                                <strong class="text-sm text-red-600">{{$message}}</strong>
-                            @enderror 
-        
+
+
+                            </select>
+                            @error('mes')
+                                <strong class="text-sm text-red-600">{{ $message }}</strong>
+                            @enderror
+
                         </div>
-    
+
                         <div class="col-md-3">
-    
-    
+
+
                             <button class="btn btn-success mt-4" type="submit"> Consultar</button>
-    
+
                         </div>
                     </div>
                 </form>
@@ -111,34 +111,54 @@
                                     <td class="text-center">
                                         <ul class="table-controls">
 
+                                            @php
+                                                $fechaOutdated = \Carbon\Carbon::parse($outdated->date_outdated)->addDays(2);
+                                                $fechaActual = \Carbon\Carbon::now('America/Lima');
+                                            @endphp
 
-                                            <form action="{{ route('outdateds.destroy', $outdated) }}" method="POST"
-                                                class="casino">
-                                                @csrf
-                                                @method('DELETE')
-                                                <a href="{{ route('outdateds.edit', $outdated) }}" class="bs-tooltip"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
-                                                    data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg"
-                                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="feather feather-edit-2 p-1 br-8 mb-1">
-                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                                        </path>
-                                                    </svg></a>
+                                            @if ($fechaOutdated->format('Y-m-d') > $fechaActual->format('Y-m-d'))
+                                                <form action="{{ route('outdateds.destroy', $outdated) }}" method="POST"
+                                                    class="casino">
+                                                    @csrf
+                                                    @method('DELETE')
 
-                                                <button type="submit" class="" style="background-color: none"><svg
-                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-trash p-1 br-8 mb-1">
-                                                        <polyline points="3 6 5 6 21 6"></polyline>
-                                                        <path
-                                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                        </path>
-                                                    </svg></button>
 
-                                            </form>
+                                                    <a href="{{ route('outdateds.edit', $outdated) }}" class="bs-tooltip"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
+                                                        data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-edit-2 p-1 br-8 mb-1">
+                                                            <path
+                                                                d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                            </path>
+                                                        </svg></a>
+
+
+
+
+                                                    <button type="submit" class=""
+                                                        style="background-color: none"><svg
+                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                            class="feather feather-trash p-1 br-8 mb-1">
+                                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                                            <path
+                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                                            </path>
+                                                        </svg></button>
+
+                                                </form>
+                                            @else
+
+                                            @endif
+
+
+
+
+
 
 
 
@@ -146,7 +166,7 @@
                                     </td>
 
 
-                                    
+
                                 </tr>
                             @endforeach
 
