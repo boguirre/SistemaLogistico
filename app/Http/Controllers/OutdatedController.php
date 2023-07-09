@@ -21,11 +21,14 @@ class OutdatedController extends Controller
 
     public function index(Request $request)
     {
+       $mesActual = Carbon::now('America/Lima')->format('m');
+
+
         if ($request->has('año') | $request->has('mes')) {
 
             $outdateds = Outdated::whereMonth('date_outdated', $request->input('mes'))->whereYear('date_outdated',$request->input('año'))->get();
         } else {
-            $outdateds = Outdated::all();
+            $outdateds = Outdated::whereMonth('date_outdated', $mesActual)->get();
         }
         return  view('outdateds.index', compact('outdateds'));
     }
