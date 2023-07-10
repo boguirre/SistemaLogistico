@@ -61,7 +61,7 @@ class PredictedController extends Controller
         ini_set('max_execution_time', 0);
 
         try {
-            $response = Http::timeout(60)->post('https://api-mode-oficina.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
+            $response = Http::timeout(60)->post('https://model-oficina-icte.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
                 'horizon' => '6',
             ]);
 
@@ -88,7 +88,7 @@ class PredictedController extends Controller
     public function predictedOfice(Request $request)
     {
         try {
-            $response = Http::timeout(60)->post('https://api-mode-oficina.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
+            $response = Http::timeout(60)->post('https://model-oficina-icte.onrender.com/katana-ml/api/v1.0/forecast/ironsteel', [
                 'horizon' => $request->number,
             ]);
 
@@ -120,7 +120,6 @@ class PredictedController extends Controller
             return view('predicted.clean.index', compact('response'));
         } catch (\Exception $e) {
             // Manejar el error de tiempo de espera
-            return view('predicted.clean.index', compact('response'));
         }
     }
 
