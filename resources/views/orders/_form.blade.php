@@ -18,7 +18,7 @@
     <div class="col-md-6">
         <label for="date_order_delivery">Fecha Entrega:</label>
         {!! Form::datetimelocal('date_order_delivery', null, [
-            'class' => 'form-control ',
+            'class' => 'form-control ', 'required' => 'required',
             'style' => 'color:black; background:white' . ($errors->has('date_order_delivery') ? ' border-red-600' : ''),
         ]) !!}
 

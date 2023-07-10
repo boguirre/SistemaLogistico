@@ -10,7 +10,7 @@
 
         <div class="col-md-12">
             <label for="name" class="form-label">Cantidad de Meses a Predecir</label>
-            <input type="number" class="form-control" id="number" name="number"> 
+            <input type="number" class="form-control" id="number" name="number" required> 
             @error('name')
                 <strong class="text-sm text-red-600">{{$message}}</strong>
             @enderror 
