@@ -84,9 +84,21 @@ Route::get('indicators/obsolescencia',[IndicatorController::class,'index'])->nam
 Route::get('indicators/tiempo',[IndicatorController::class,'pedidosTiempo'])->name('indicators.tiempo');
 Route::get('indicators/completo',[IndicatorController::class,'pedidosCompletos'])->name('indicators.completo');
 
+
+Route::get('predicted/clean/create',[PredictedController::class,'createClean'])->name('predicted.createClean');
+Route::get('predicted/clean',[PredictedController::class,'cleanIndex'])->name('predicted.clean');
+Route::post('predicted/clean',[PredictedController::class,'predictedClean'])->name('predicted.post.clean');
+
+
+Route::get('predicted/ofice/create',[PredictedController::class,'createOfice'])->name('predicted.createOfice');
+Route::get('predicted/ofice',[PredictedController::class,'oficeIndex'])->name('predicted.ofice');
+Route::post('predicted/ofice',[PredictedController::class,'predictedOfice'])->name('predicted.post.ofice');
+
+
 Route::get('predicted',[PredictedController::class,'index'])->name('predicted.index');
 Route::get('predicted/create',[PredictedController::class,'create'])->name('predicted.create');
 Route::post('predicted/flask/',[PredictedController::class,'predicted'])->name('predicted.post');
+
 
 Route::get('predicted/tiempo',[PredictedController::class,'predictedtime'])->name('predicted.tiempo');
 Route::get('indicators/export/', [IndicatorController::class, 'exportAllPediCompletos'])->name('indicators.export');

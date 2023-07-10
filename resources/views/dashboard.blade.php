@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card-body">
         <br>
-        <h4 class="text-center">DASHBOARD</h4>       
+        <h4 class="">Bienvenido</h4>       
 
     </div>
 

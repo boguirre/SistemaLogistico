@@ -5,13 +5,12 @@
     <div class="row layout-top-spacing">
 
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-4">
                 <div class="card component-card_2">
                     <div class="card-body">
                         <h5 class="card-title">MATERIALES Y UTILES DE OFICINA	 </h5>
-                        {{-- <p class="card-text">Etiam sed augue ac justo tincidunt posuere. Vivamus euismod eros, nec risus malesuada.</p> --}}
-                        <a href="{{route('predicted.ofice')}}" class="btn btn-primary">Realizar Predicción</a>
+                        <a href="#" class="btn btn-primary">Realizar Predicción</a>
                     </div>
                 </div>
             </div>
@@ -20,14 +19,20 @@
                 <div class="card component-card_2">
                     <div class="card-body">
                         <h5 class="card-title">PRODUCTOS DE ASEO / LIMPIEZA	</h5>
-                        {{-- <p class="card-text">Etiam sed augue ac justo tincidunt posuere. Vivamus euismod eros, nec risus malesuada.</p> --}}
-                        <a href="{{route('predicted.clean')}}" class="btn btn-primary">Realizar Predicción</a>
+                        <a href="#" class="btn btn-primary">Realizar Predicción</a>
                     </div>
                 </div>
             </div>
 
-            
-        </div>
+            <div class="col-md-4">
+                <div class="card component-card_2">
+                    <div class="card-body">
+                        <h5 class="card-title">PRODUCTO DE 	PAPEL BOND</h5>
+                        <a href="#" class="btn btn-primary">Realizar Predicción</a>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
 
 
 
@@ -41,13 +46,13 @@
 
 
         <div class="page-meta">
-            <a href="{{ route('predicted.create') }}" class="btn btn-xm btn-primary" style="float: right;">Realizar
+            <a href="{{ route('predicted.createClean') }}" class="btn btn-xm btn-primary" style="float: right;">Realizar
                 Prediccion</a>
 
             <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Resultados</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Prediccion | PRODUCTO DE PAPEL BOND</li>
+                    <li class="breadcrumb-item active" aria-current="page">Prediccion</li>
                 </ol>
             </nav>
             <br>

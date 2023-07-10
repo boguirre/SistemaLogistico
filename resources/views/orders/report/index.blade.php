@@ -146,7 +146,7 @@
 <div class="col-xl-4 col-lg-5">
   <div class="card shadow mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-          <h6 class="m-0 font-weight-bold" style="color: #4C5755">COMPRAS DEL MES CON ESTADOS:</h6>
+          <h6 class="m-0 font-weight-bold" style="color: #4C5755">PEDIDOS DEL MES CON ESTADOS:</h6>
           
       </div>
       <div class="card-body">
@@ -181,7 +181,7 @@
             data: {
             labels:['TIEMPO','DESTIEMPO'],
             datasets: [{
-                label: '# De Asistencias',
+                label: '# De Pedidos',
                 data:cData.data,
                 backgroundColor: [
                 
@@ -215,7 +215,7 @@
             data: {
             labels:["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
             datasets: [{
-                label: '# De Total De Cursos',
+                label: '# De Total De Pedidos',
                 data:cData.report,
                 backgroundColor: [
                     '#e1bee7',
