@@ -51,7 +51,7 @@
                                 </div>
                             </td>
                             <td>
-                                {{\Carbon\Carbon::parse($order->date_order)->format('d M y h:i a')}}
+                                {{\Carbon\Carbon::parse($order->date_order)->format('Y-m-d')}}
                             </td>
                             <td>{{$order->total}}</td>
                             <td>

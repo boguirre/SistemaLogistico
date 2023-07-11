@@ -21,12 +21,12 @@ class OutdatedController extends Controller
 
     public function index(Request $request)
     {
-       $mesActual = Carbon::now('America/Lima')->format('m');
+        $mesActual = Carbon::now('America/Lima')->format('m');
 
 
         if ($request->has('año') | $request->has('mes')) {
 
-            $outdateds = Outdated::whereMonth('date_outdated', $request->input('mes'))->whereYear('date_outdated',$request->input('año'))->get();
+            $outdateds = Outdated::whereMonth('date_outdated', $request->input('mes'))->whereYear('date_outdated', $request->input('año'))->get();
         } else {
             $outdateds = Outdated::whereMonth('date_outdated', $mesActual)->get();
         }
@@ -80,7 +80,7 @@ class OutdatedController extends Controller
                                     ->havingRaw("MAX(damageds.status) = 'VALID'")
                                     ->get();*/
 
-        $products = Product::join('damageds', 'products.id', '=', 'damageds.product_id')
+        /*$products = Product::join('damageds', 'products.id', '=', 'damageds.product_id')
             ->leftJoin('outdateds', function ($join) use ($currentMonth) {
                 $join->on('products.id', '=', 'outdateds.product_id')
                     ->whereMonth('outdateds.created_at', '=', $currentMonth);
@@ -89,7 +89,52 @@ class OutdatedController extends Controller
             ->whereNull('outdateds.product_id')
             ->select('products.id', 'products.name', 'products.stock', DB::raw('(SELECT SUM(quantity) FROM damageds WHERE product_id = products.id AND status = "VALID") as total_quantity'))
             ->groupBy('products.id', 'products.name', 'products.stock')
+            ->get();*/
+
+        /* $products = Product::leftJoin('damageds', 'products.id', '=', 'damageds.product_id')
+            ->leftJoin('outdateds', function ($join) use ($currentMonth) {
+                $join->on('products.id', '=', 'outdateds.product_id')
+                    ->whereMonth('outdateds.created_at', '=', $currentMonth);
+            })
+            ->where(function ($query) use ($currentMonth) {
+                $query->whereMonth('damageds.created_at', '=', $currentMonth)
+                    ->orWhereNull('damageds.created_at');
+            })
+            ->where(function ($query) use ($currentMonth) {
+                $query->whereNull('outdateds.product_id')
+                    ->orWhereMonth('outdateds.created_at', '!=', $currentMonth)
+                    ->orWhereNull('outdateds.created_at');
+            })
+            ->select('products.id', 'products.name', 'products.stock', DB::raw('(SELECT SUM(quantity) FROM damageds WHERE product_id = products.id AND status = "VALID") as total_quantity'))
+            ->groupBy('products.id', 'products.name', 'products.stock')
+            ->get();*/
+
+
+
+        $products = Product::leftJoin('damageds', 'products.id', '=', 'damageds.product_id')
+            ->leftJoin('outdateds', function ($join) use ($currentMonth) {
+                $join->on('products.id', '=', 'outdateds.product_id')
+                    ->whereMonth('outdateds.created_at', '=', $currentMonth);
+            })
+            ->where(function ($query) use ($currentMonth) {
+                $query->whereMonth('damageds.created_at', '=', $currentMonth)
+                    ->orWhereNull('damageds.created_at');
+            })
+            ->where(function ($query) use ($currentMonth) {
+                $query->whereNull('outdateds.product_id')
+                    ->orWhereMonth('outdateds.created_at', '!=', $currentMonth)
+                    ->orWhereNull('outdateds.created_at');
+            })
+            ->select(
+                'products.id',
+                'products.name',
+                'products.stock',
+                DB::raw('COALESCE(SUM(damageds.quantity), 0) as total_quantity')
+            )
+            ->groupBy('products.id', 'products.name', 'products.stock')
             ->get();
+
+
 
         return view('outdateds.create', compact('products'));
     }

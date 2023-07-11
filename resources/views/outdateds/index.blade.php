@@ -117,7 +117,11 @@
                                             @endphp
 
                                             @if ($fechaOutdated->format('Y-m-d') > $fechaActual->format('Y-m-d'))
-                                                <form action="{{ route('outdateds.destroy', $outdated) }}" method="POST"
+                                                
+                                            
+                                            
+                                            
+                                            <form action="{{ route('outdateds.destroy', $outdated) }}" method="POST"
                                                     class="casino">
                                                     @csrf
                                                     @method('DELETE')
